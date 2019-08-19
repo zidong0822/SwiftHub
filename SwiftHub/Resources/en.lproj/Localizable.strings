@@ -1,0 +1,73 @@
+/* 
+  Localizable.strings
+  SwiftHub
+
+  Created by Harvey He on 2019/8/15.
+  Copyright © 2019 Harvey He. All rights reserved.
+*/
+/* Search */
+"Search.SearchBar.Placeholder" = "Global Search";
+"Search.RepositoriesSegment.Title" = "Repositories";
+"Search.UsersSegment.Title" = "Users";
+"Search.DailySegment.Title" = "Daily";
+"Search.WeeklySegment.Title" = "Weekly";
+"Search.MonthlySegment.Title" = "Monthly";
+"Search.TrendingSegment.Title" = "Trending";
+"Search.SearchSegment.Title" = "Search";
+"Search.TrendingSection.Title" = "Trending";
+"Search.TrendingSectionWithLanguage.Title" = "Trending results for %@";
+"Search.SearchSection.Title" = "Search";
+"Search.SearchSectionWithLanguage.Title" = "Search results for %@";
+"Search.RepositoriesTotalCount.Title" = "%@ repositories";
+"Search.UsersTotalCount.Title" = "%@ users";
+"Search.SortRepositories.BestMatch.Title" = "Best match";
+"Search.SortRepositories.MostStars.Title" = "Most stars";
+"Search.SortRepositories.FewestStars.Title" = "Fewest stars";
+"Search.SortRepositories.MostForks.Title" = "Most forks";
+"Search.SortRepositories.FewestForks.Title" = "Fewest forks";
+"Search.SortRepositories.RecentlyUpdated.Title" = "Recently updated";
+"Search.SortRepositories.LastRecentlyUpdated.Title" = "Last recently updated";
+"Search.SortUsers.BestMatch.Title" = "Best match";
+"Search.SortUsers.MostFollowers.Title" = "Most followers";
+"Search.SortUsers.FewestFollowers.Title" = "Fewest followers";
+"Search.SortUsers.MostRecentlyJoined.Title" = "Most recently joined";
+"Search.SortUsers.LeastRecentlyJoined.Title" = "Least recently joined";
+"Search.SortUsers.MostRepositories.Title" = "Most repositories";
+"Search.SortUsers.FewestRepositories.Title" = "Fewest repositories";
+/* Settings */
+"Settings.Navigation.Title" = "Settings";
+"Settings.AccountSection.Title" = "Account";
+"Settings.ProjectsSection.Title" = "My Projects";
+"Settings.PreferencesSection.Title" = "Preferences";
+"Settings.Banner.Title" = "Ads enabled";
+"Settings.NightMode.Title" = "Night mode";
+"Settings.Theme.Title" = "Color theme";
+"Settings.Language.Title" = "Language";
+"Settings.Contacts.Title" = "Invite friends";
+"Settings.RemoveCache.Title" = "Remove cache";
+"Settings.RemoveCache.Alert.SuccessMessage" = "Cache Successfully Cleared";
+"Settings.SupportSection.Title" = "Support";
+"Settings.Acknowledgements.Title" = "Acknowledgements";
+"Settings.WhatsNew.Title" = "Whats New";
+"Settings.LogOut.Title" = "Log Out";
+"Settings.Logout.Alert.Message" = "Are you sure want to log out from SwiftHub?";
+"Settings.Logout.Alert.ConfirmButton.Title" = "Logout";
+/* Whats New */
+"WhatsNew.Title" = "Whats New";
+"WhatsNew.Item1.Title" = "WhatsNewKit";
+"WhatsNew.Item1.Subtitle" = "WhatsNewKit enables you to easily showcase your awesome new app features";
+"WhatsNew.Item2.Title" = "Themes";
+"WhatsNew.Item2.Subtitle" = "You can apply different themes with Light and Dark modes";
+"WhatsNew.Item3.Title" = "Open Source";
+"WhatsNew.Item3.Subtitle" = "SwiftHub is fully open source\nStars are very welcomed ★";
+"WhatsNew.Item4.Title" = "Trending";
+"WhatsNew.Item4.Subtitle" = "See what the GitHub community is most excited about today";
+"WhatsNew.DetailButton.Title" = "View on GitHub";
+"WhatsNew.CompletionButton.Title" = "Continue";
+/* Home TabBar */
+"Home.TabBar.Events.Title" = "Events";
+"Home.TabBar.Search.Title" = "Search";
+"Home.TabBar.Profile.Title" = "Profile";
+"Home.TabBar.Login.Title" = "Login";
+"Home.TabBar.Notifications.Title" = "Activities";
+"Home.TabBar.Settings.Title" = "Settings";
