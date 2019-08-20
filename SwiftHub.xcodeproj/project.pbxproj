@@ -51,6 +51,10 @@
 		58D91B94230695C900ABA1CE /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91B93230695C900ABA1CE /* SettingsSection.swift */; };
 		58D91B96230699A300ABA1CE /* SettingCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91B95230699A300ABA1CE /* SettingCellViewModel.swift */; };
 		58D91B9B230A97A300ABA1CE /* Kingfisher+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91B9A230A97A300ABA1CE /* Kingfisher+Rx.swift */; };
+		58D91B9F230BD2C800ABA1CE /* SettingSwitchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91B9E230BD2C800ABA1CE /* SettingSwitchCellViewModel.swift */; };
+		58D91BA5230BD40D00ABA1CE /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BA4230BD40D00ABA1CE /* Switch.swift */; };
+		58D91BAE230BD6A300ABA1CE /* SettingSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BAC230BD6A300ABA1CE /* SettingSwitchCell.swift */; };
+		58D91BAF230BD6A300ABA1CE /* SettingSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58D91BAD230BD6A300ABA1CE /* SettingSwitchCell.xib */; };
 		AFA78AC4B2FBC9F48B092392 /* Pods_SwiftHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D71B9383927E6DEA0D8D3F9B /* Pods_SwiftHub.framework */; };
 		BD6106BCF9A01E9813EAD9AA /* Pods_SwiftHubTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9D3C6AAF9EF234DFA9E7B5 /* Pods_SwiftHubTests.framework */; };
 /* End PBXBuildFile section */
@@ -128,6 +132,10 @@
 		58D91B93230695C900ABA1CE /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		58D91B95230699A300ABA1CE /* SettingCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCellViewModel.swift; sourceTree = "<group>"; };
 		58D91B9A230A97A300ABA1CE /* Kingfisher+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kingfisher+Rx.swift"; sourceTree = "<group>"; };
+		58D91B9E230BD2C800ABA1CE /* SettingSwitchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchCellViewModel.swift; sourceTree = "<group>"; };
+		58D91BA4230BD40D00ABA1CE /* Switch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
+		58D91BAC230BD6A300ABA1CE /* SettingSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchCell.swift; sourceTree = "<group>"; };
+		58D91BAD230BD6A300ABA1CE /* SettingSwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingSwitchCell.xib; sourceTree = "<group>"; };
 		70EB0089029B3268848D8EF2 /* Pods-SwiftHubTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHubTests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftHubTests/Pods-SwiftHubTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A4CD9F4B500E842A34328676 /* Pods-SwiftHubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHubTests.release.xcconfig"; path = "Target Support Files/Pods-SwiftHubTests/Pods-SwiftHubTests.release.xcconfig"; sourceTree = "<group>"; };
 		A5A7C160B8E810AA18DF1685 /* Pods-SwiftHubUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHubUITests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftHubUITests/Pods-SwiftHubUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -255,6 +263,7 @@
 				585E057A230684B700204AD2 /* ImageView.swift */,
 				585E057C230684E900204AD2 /* Label.swift */,
 				585E05802306861000204AD2 /* DefaultTableViewCellViewModel.swift */,
+				58D91BA4230BD40D00ABA1CE /* Switch.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -458,6 +467,7 @@
 			children = (
 				585E056C230661AC00204AD2 /* SettingsViewModel.swift */,
 				58D91B95230699A300ABA1CE /* SettingCellViewModel.swift */,
+				58D91B9E230BD2C800ABA1CE /* SettingSwitchCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -475,6 +485,8 @@
 				585E05832306874500204AD2 /* SettingCell.swift */,
 				58D91B91230691A300ABA1CE /* SettingCell.xib */,
 				58D91B93230695C900ABA1CE /* SettingsSection.swift */,
+				58D91BAC230BD6A300ABA1CE /* SettingSwitchCell.swift */,
+				58D91BAD230BD6A300ABA1CE /* SettingSwitchCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -607,6 +619,7 @@
 				58D91B92230691A300ABA1CE /* SettingCell.xib in Resources */,
 				585E0557230557A600204AD2 /* Localizable.strings in Resources */,
 				585E04EC2305280000204AD2 /* Assets.xcassets in Resources */,
+				58D91BAF230BD6A300ABA1CE /* SettingSwitchCell.xib in Resources */,
 				585E04EA230527FF00204AD2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -757,12 +770,14 @@
 				585E056F2306628300204AD2 /* TableViewController.swift in Sources */,
 				585E052A2305325100204AD2 /* Api.swift in Sources */,
 				585E05812306861000204AD2 /* DefaultTableViewCellViewModel.swift in Sources */,
+				58D91B9F230BD2C800ABA1CE /* SettingSwitchCellViewModel.swift in Sources */,
 				585E053523053B4700204AD2 /* NavigationController.swift in Sources */,
 				58D91B96230699A300ABA1CE /* SettingCellViewModel.swift in Sources */,
 				585E05312305381900204AD2 /* SearchViewController.swift in Sources */,
 				585E052123052F9800204AD2 /* Application.swift in Sources */,
 				585E051F23052E6C00204AD2 /* LibsManager.swift in Sources */,
 				585E05522305554C00204AD2 /* R.generated.swift in Sources */,
+				58D91BAE230BD6A300ABA1CE /* SettingSwitchCell.swift in Sources */,
 				58D91B94230695C900ABA1CE /* SettingsSection.swift in Sources */,
 				585E053B23053C2100204AD2 /* NotificationsViewController.swift in Sources */,
 				585E057D230684E900204AD2 /* Label.swift in Sources */,
@@ -774,6 +789,7 @@
 				585E05792306848A00204AD2 /* DefaultTableViewCell.swift in Sources */,
 				585E053823053BD800204AD2 /* EventsViewController.swift in Sources */,
 				585E04E5230527FF00204AD2 /* AppDelegate.swift in Sources */,
+				58D91BA5230BD40D00ABA1CE /* Switch.swift in Sources */,
 				585E0571230662D600204AD2 /* TableView.swift in Sources */,
 				585E051D23052A6300204AD2 /* Configs.swift in Sources */,
 				585E05632305627900204AD2 /* RestApi.swift in Sources */,

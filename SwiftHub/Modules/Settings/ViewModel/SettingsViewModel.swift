@@ -11,6 +11,7 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import Kingfisher
+import Rswift
 class SettingsViewModel: ViewModel, ViewModelType {
 
     struct Input {
@@ -21,6 +22,16 @@ class SettingsViewModel: ViewModel, ViewModelType {
     struct Output {
         let items: BehaviorRelay<[SettingsSection]>
     }
+    
+    let nightModeEnabled: BehaviorRelay<Bool>
+    
+    var cellDisposeBag = DisposeBag()
+    
+    override init(provider: SwiftHubAPI) {
+        nightModeEnabled = BehaviorRelay(value: ThemeType.currentTheme().isDark)
+        super.init(provider: provider)
+    }
+    
     func transform(input: SettingsViewModel.Input) -> SettingsViewModel.Output {
         
         let elements = BehaviorRelay<[SettingsSection]>(value: [])
@@ -35,16 +46,30 @@ class SettingsViewModel: ViewModel, ViewModelType {
         let cacheSize = refresh.flatMapLatest { () -> Observable<Int> in
             return LibsManager.shared.kingfisherCacheSize()
         }
-        
+    
         Observable.combineLatest(refresh, cacheSize).map { [] (_, size) -> [SettingsSection] in
-            let settingCellViewModel = SettingCellViewModel(with:"123", detail:"123", image:UIImage(named:""), hidesDisclosure: false)
             var items: [SettingsSection] = []
+            let nightModeEnabled = self.nightModeEnabled.value
+            let nightModeCellViewModel = SettingSwitchCellViewModel(with: R.string.localizable.settingsNightModeTitle.key.localized(), detail: nil,
+                                                                    image: R.image.icon_cell_night_mode()?.template, hidesDisclosure: true, isEnabled: nightModeEnabled)
+            nightModeCellViewModel.switchChanged.skip(1).bind(to: self.nightModeEnabled).disposed(by: self.cellDisposeBag)
+            
             items += [SettingsSection.setting(title:"123",
-                                              items:[SettingsSectionItem.profileItem(viewModel: settingCellViewModel),SettingsSectionItem.profileItem(viewModel: settingCellViewModel),SettingsSectionItem.profileItem(viewModel: settingCellViewModel)])]
+                        items:[SettingsSectionItem.nightModeItem(viewModel:nightModeCellViewModel)])]
             return items
             
             
         }.bind(to:elements).disposed(by:rx.disposeBag)
+        
+        nightModeEnabled.subscribe(onNext: { (isEnabled) in
+            var theme = ThemeType.currentTheme()
+            if theme.isDark != isEnabled {
+                theme = theme.toggled()
+            }
+            themeService.switch(theme)
+        }).disposed(by: rx.disposeBag)
+
+        
         return Output(items:elements)
     }
 }

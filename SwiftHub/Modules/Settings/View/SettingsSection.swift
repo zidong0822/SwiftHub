@@ -15,6 +15,7 @@ enum SettingsSection {
 enum SettingsSectionItem {
     // Account
     case profileItem(viewModel: SettingCellViewModel)
+    case nightModeItem(viewModel: SettingSwitchCellViewModel)
 }
 
 extension SettingsSectionItem: IdentifiableType {
@@ -22,6 +23,7 @@ extension SettingsSectionItem: IdentifiableType {
     var identity: Identity {
         switch self {
         case .profileItem(let viewModel): return viewModel.title.value ?? ""
+        case .nightModeItem(let viewModel): return viewModel.title.value ?? ""
         }
     }
 }

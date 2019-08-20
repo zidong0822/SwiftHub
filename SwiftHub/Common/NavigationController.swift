@@ -10,10 +10,17 @@ import UIKit
 import RxSwift
 class NavigationController: UINavigationController {
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return globalStatusBarStyle.value
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationBar.isTranslucent = false
+        
+        globalStatusBarStyle.mapToVoid().subscribe(onNext:{ [weak self] () in
+            self?.setNeedsStatusBarAppearanceUpdate()
+        }).disposed(by: rx.disposeBag)
         
         themeService.rx
             .bind({ $0.secondary }, to: navigationBar.rx.tintColor)

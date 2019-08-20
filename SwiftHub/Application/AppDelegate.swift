@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UIApplication.shared.delegate as? AppDelegate
     }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let libsManager = LibsManager.shared
+        libsManager.setupLibs(with: window)
         Application.shared.presentInitialScreen(in:window!)
         return true
     }

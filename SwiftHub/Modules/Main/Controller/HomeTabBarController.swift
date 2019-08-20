@@ -60,6 +60,8 @@ enum HomeTabBarItem: Int {
 //        if let selectedImage = image {
 //            item.selectedImage = selectedImage.withRenderingMode(.alwaysOriginal)
 //        }
+        
+        
         vc.tabBarItem = item
         return vc
     }
@@ -89,13 +91,13 @@ class HomeTabBarController: UITabBarController, Navigatable {
     
     func makeUI() {
         themeService.rx
+            .bind({ $0.secondary }, to: tabBar.rx.tintColor)
             .bind({ $0.primaryDark }, to: tabBar.rx.barTintColor)
             .disposed(by: rx.disposeBag)
     }
     
     func bindViewModel() {
         guard let viewModel = viewModel else { return }
-        
         let input = HomeTabBarViewModel.Input(whatsNewTrigger: rx.viewDidAppear.mapToVoid())
         let output = viewModel.transform(input: input)
         output.tabBarItems.drive(onNext: { [weak self] (tabBarItems) in

@@ -15,7 +15,7 @@ class LibsManager: NSObject {
     
     private override init() {
         super.init()
-      // ImageCache.default.rx
+        // ImageCache.default.rx
     }
     
     func setupLibs(with window:UIWindow? = nil) {
@@ -25,18 +25,18 @@ class LibsManager: NSObject {
     
     func setupTheme() {
         themeService.rx
-            .bind({ $0.statusBarStyle }, to: UIApplication.shared.rx.statusBarStyle)
+            .bind({$0.statusBarStyle}, to: UIApplication.shared.rx.statusBarStyle)
             .disposed(by: rx.disposeBag)
     }
-
+    
 }
 
 extension LibsManager {
-
+    
     func removeKingfisherCache() -> Observable<Void> {
         return ImageCache.default.rx.clearCache()
     }
-
+    
     func kingfisherCacheSize() -> Observable<Int> {
         return ImageCache.default.rx.retrieveCacheSize()
     }
