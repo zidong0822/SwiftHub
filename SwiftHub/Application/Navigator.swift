@@ -73,8 +73,10 @@ class Navigator: NSObject {
                 nav.pushViewController(target, animated: true)
             }
         case .detail:
-            let nav = NavigationController(rootViewController: target)
-            sender.showDetailViewController(nav, sender: nil)
+            DispatchQueue.main.async {
+                let nav = NavigationController(rootViewController: target)
+                sender.showDetailViewController(nav, sender: nil)
+            }
         default:
             break
         }
