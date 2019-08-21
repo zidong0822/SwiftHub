@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import RxTheme
 import SwifterSwift
+
 let globalStatusBarStyle = BehaviorRelay<UIStatusBarStyle>(value: .default)
 
 let themeService = ThemeType.service(initial: ThemeType.currentTheme())

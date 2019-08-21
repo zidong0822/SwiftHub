@@ -55,6 +55,12 @@
 		58D91BA5230BD40D00ABA1CE /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BA4230BD40D00ABA1CE /* Switch.swift */; };
 		58D91BAE230BD6A300ABA1CE /* SettingSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BAC230BD6A300ABA1CE /* SettingSwitchCell.swift */; };
 		58D91BAF230BD6A300ABA1CE /* SettingSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58D91BAD230BD6A300ABA1CE /* SettingSwitchCell.xib */; };
+		58D91BB3230D30A300ABA1CE /* ThemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BB2230D30A300ABA1CE /* ThemeViewModel.swift */; };
+		58D91BB7230D30F200ABA1CE /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BB5230D30F200ABA1CE /* ThemeCell.swift */; };
+		58D91BB8230D30F200ABA1CE /* ThemeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58D91BB6230D30F200ABA1CE /* ThemeCell.xib */; };
+		58D91BBC230D316C00ABA1CE /* ThemeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BBB230D316C00ABA1CE /* ThemeCellViewModel.swift */; };
+		58D91BBE230D348400ABA1CE /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BBD230D348400ABA1CE /* ThemeViewController.swift */; };
+		58D91BC1230D390D00ABA1CE /* BarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BC0230D390D00ABA1CE /* BarButtonItem.swift */; };
 		AFA78AC4B2FBC9F48B092392 /* Pods_SwiftHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D71B9383927E6DEA0D8D3F9B /* Pods_SwiftHub.framework */; };
 		BD6106BCF9A01E9813EAD9AA /* Pods_SwiftHubTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9D3C6AAF9EF234DFA9E7B5 /* Pods_SwiftHubTests.framework */; };
 /* End PBXBuildFile section */
@@ -136,6 +142,12 @@
 		58D91BA4230BD40D00ABA1CE /* Switch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
 		58D91BAC230BD6A300ABA1CE /* SettingSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchCell.swift; sourceTree = "<group>"; };
 		58D91BAD230BD6A300ABA1CE /* SettingSwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingSwitchCell.xib; sourceTree = "<group>"; };
+		58D91BB2230D30A300ABA1CE /* ThemeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewModel.swift; sourceTree = "<group>"; };
+		58D91BB5230D30F200ABA1CE /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
+		58D91BB6230D30F200ABA1CE /* ThemeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThemeCell.xib; sourceTree = "<group>"; };
+		58D91BBB230D316C00ABA1CE /* ThemeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCellViewModel.swift; sourceTree = "<group>"; };
+		58D91BBD230D348400ABA1CE /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
+		58D91BC0230D390D00ABA1CE /* BarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButtonItem.swift; sourceTree = "<group>"; };
 		70EB0089029B3268848D8EF2 /* Pods-SwiftHubTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHubTests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftHubTests/Pods-SwiftHubTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A4CD9F4B500E842A34328676 /* Pods-SwiftHubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHubTests.release.xcconfig"; path = "Target Support Files/Pods-SwiftHubTests/Pods-SwiftHubTests.release.xcconfig"; sourceTree = "<group>"; };
 		A5A7C160B8E810AA18DF1685 /* Pods-SwiftHubUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHubUITests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftHubUITests/Pods-SwiftHubUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -264,6 +276,7 @@
 				585E057C230684E900204AD2 /* Label.swift */,
 				585E05802306861000204AD2 /* DefaultTableViewCellViewModel.swift */,
 				58D91BA4230BD40D00ABA1CE /* Switch.swift */,
+				58D91BC0230D390D00ABA1CE /* BarButtonItem.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -325,6 +338,7 @@
 		585E051A230529CB00204AD2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				58D91BB1230D307700ABA1CE /* Theme */,
 				585E054223053CCF00204AD2 /* Login */,
 				585E053E23053C7000204AD2 /* Settings */,
 				585E053923053C0500204AD2 /* Notifications */,
@@ -491,6 +505,50 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		58D91BB1230D307700ABA1CE /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				58D91BBF230D349200ABA1CE /* Controller */,
+				58D91BBA230D314800ABA1CE /* Model */,
+				58D91BB9230D30F500ABA1CE /* View */,
+				58D91BB4230D30CD00ABA1CE /* ViewModel */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		58D91BB4230D30CD00ABA1CE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				58D91BB2230D30A300ABA1CE /* ThemeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		58D91BB9230D30F500ABA1CE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				58D91BB5230D30F200ABA1CE /* ThemeCell.swift */,
+				58D91BB6230D30F200ABA1CE /* ThemeCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		58D91BBA230D314800ABA1CE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				58D91BBB230D316C00ABA1CE /* ThemeCellViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		58D91BBF230D349200ABA1CE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				58D91BBD230D348400ABA1CE /* ThemeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		C53D3C1D20B068DC4A77BB4C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -620,6 +678,7 @@
 				585E0557230557A600204AD2 /* Localizable.strings in Resources */,
 				585E04EC2305280000204AD2 /* Assets.xcassets in Resources */,
 				58D91BAF230BD6A300ABA1CE /* SettingSwitchCell.xib in Resources */,
+				58D91BB8230D30F200ABA1CE /* ThemeCell.xib in Resources */,
 				585E04EA230527FF00204AD2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -779,10 +838,13 @@
 				585E05522305554C00204AD2 /* R.generated.swift in Sources */,
 				58D91BAE230BD6A300ABA1CE /* SettingSwitchCell.swift in Sources */,
 				58D91B94230695C900ABA1CE /* SettingsSection.swift in Sources */,
+				58D91BBE230D348400ABA1CE /* ThemeViewController.swift in Sources */,
 				585E053B23053C2100204AD2 /* NotificationsViewController.swift in Sources */,
+				58D91BC1230D390D00ABA1CE /* BarButtonItem.swift in Sources */,
 				585E057D230684E900204AD2 /* Label.swift in Sources */,
 				585E052D2305374300204AD2 /* HomeTabBarController.swift in Sources */,
 				585E05752306779A00204AD2 /* StackView.swift in Sources */,
+				58D91BBC230D316C00ABA1CE /* ThemeCellViewModel.swift in Sources */,
 				585E053323053A0600204AD2 /* ViewController.swift in Sources */,
 				585E054123053C8900204AD2 /* SettingsViewController.swift in Sources */,
 				585E05772306840700204AD2 /* TableViewCell.swift in Sources */,
@@ -797,6 +859,7 @@
 				585E054523053CE500204AD2 /* LoginViewController.swift in Sources */,
 				585E0523230530D000204AD2 /* Navigator.swift in Sources */,
 				585E056A2306520800204AD2 /* ThemeManager.swift in Sources */,
+				58D91BB3230D30A300ABA1CE /* ThemeViewModel.swift in Sources */,
 				585E057F230685A800204AD2 /* UIColor+SwiftHub.swift in Sources */,
 				585E05842306874500204AD2 /* SettingCell.swift in Sources */,
 				585E0565230565C300204AD2 /* Observable+Operators.swift in Sources */,
@@ -805,6 +868,7 @@
 				585E05732306631400204AD2 /* View.swift in Sources */,
 				58D91B9B230A97A300ABA1CE /* Kingfisher+Rx.swift in Sources */,
 				585E0528230531EF00204AD2 /* ViewModel.swift in Sources */,
+				58D91BB7230D30F200ABA1CE /* ThemeCell.swift in Sources */,
 				585E0526230531CA00204AD2 /* HomeTabBarViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

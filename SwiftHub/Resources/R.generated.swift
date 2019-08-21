@@ -42,12 +42,16 @@ struct R: Rswift.Validatable {
   }
   #endif
   
-  /// This `R.image` struct is generated, and contains static references to 12 images.
+  /// This `R.image` struct is generated, and contains static references to 14 images.
   struct image {
     /// Image `icon_cell_disclosure`.
     static let icon_cell_disclosure = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_disclosure")
     /// Image `icon_cell_night_mode`.
     static let icon_cell_night_mode = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_night_mode")
+    /// Image `icon_cell_theme`.
+    static let icon_cell_theme = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_theme")
+    /// Image `icon_navigation_close`.
+    static let icon_navigation_close = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_navigation_close")
     /// Image `icon_tabbar_activity`.
     static let icon_tabbar_activity = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_tabbar_activity")
     /// Image `icon_tabbar_login`.
@@ -80,6 +84,20 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "icon_cell_night_mode", bundle: ..., traitCollection: ...)`
     static func icon_cell_night_mode(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_cell_night_mode, compatibleWith: traitCollection)
+    }
+    #endif
+    
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "icon_cell_theme", bundle: ..., traitCollection: ...)`
+    static func icon_cell_theme(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_cell_theme, compatibleWith: traitCollection)
+    }
+    #endif
+    
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "icon_navigation_close", bundle: ..., traitCollection: ...)`
+    static func icon_navigation_close(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_navigation_close, compatibleWith: traitCollection)
     }
     #endif
     
@@ -156,12 +174,14 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 2 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 3 nibs.
   struct nib {
     /// Nib `SettingCell`.
     static let settingCell = _R.nib._SettingCell()
     /// Nib `SettingSwitchCell`.
     static let settingSwitchCell = _R.nib._SettingSwitchCell()
+    /// Nib `ThemeCell`.
+    static let themeCell = _R.nib._ThemeCell()
     
     #if os(iOS) || os(tvOS)
     /// `UINib(name: "SettingCell", in: bundle)`
@@ -179,6 +199,14 @@ struct R: Rswift.Validatable {
     }
     #endif
     
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "ThemeCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.themeCell) instead")
+    static func themeCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.themeCell)
+    }
+    #endif
+    
     static func settingCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SettingCell? {
       return R.nib.settingCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SettingCell
     }
@@ -187,15 +215,21 @@ struct R: Rswift.Validatable {
       return R.nib.settingSwitchCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SettingSwitchCell
     }
     
+    static func themeCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ThemeCell? {
+      return R.nib.themeCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ThemeCell
+    }
+    
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 3 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `SettingCell`.
     static let settingCell: Rswift.ReuseIdentifier<SettingCell> = Rswift.ReuseIdentifier(identifier: "SettingCell")
     /// Reuse identifier `SettingSwitchCell`.
     static let settingSwitchCell: Rswift.ReuseIdentifier<SettingSwitchCell> = Rswift.ReuseIdentifier(identifier: "SettingSwitchCell")
+    /// Reuse identifier `themeCell`.
+    static let themeCell: Rswift.ReuseIdentifier<ThemeCell> = Rswift.ReuseIdentifier(identifier: "themeCell")
     
     fileprivate init() {}
   }
@@ -1905,6 +1939,20 @@ struct _R: Rswift.Validatable {
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SettingSwitchCell? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SettingSwitchCell
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _ThemeCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = ThemeCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "themeCell"
+      let name = "ThemeCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ThemeCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ThemeCell
       }
       
       fileprivate init() {}

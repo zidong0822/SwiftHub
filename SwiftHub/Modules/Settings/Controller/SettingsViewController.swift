@@ -13,17 +13,17 @@ import RxDataSources
 private let reuseIdentifier = R.reuseIdentifier.settingCell.identifier
 private let switchReuseIdentifier = R.reuseIdentifier.settingSwitchCell.identifier
 class SettingsViewController: TableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func makeUI() {
         super.makeUI()
         
         languageChanged.subscribe(onNext: { [weak self] () in
-         self?.navigationTitle = R.string.localizable.settingsNavigationTitle.key.localized()
+            self?.navigationTitle = R.string.localizable.settingsNavigationTitle.key.localized()
         }).disposed(by: rx.disposeBag)
         
         tableView.register(R.nib.settingCell)
@@ -38,7 +38,7 @@ class SettingsViewController: TableViewController {
         let output = viewModel.transform(input: input)
         let dataSource = RxTableViewSectionedReloadDataSource<SettingsSection>(configureCell: { dataSource, tableView, indexPath, item in
             switch item {
-            case .profileItem(let viewModel):
+            case .themeItem(let viewModel):
                 let cell = (tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? SettingCell)!
                 cell.bind(to:viewModel)
                 return cell
@@ -52,5 +52,15 @@ class SettingsViewController: TableViewController {
             return section.title
         })
         output.items.asObservable().bind(to:tableView.rx.items(dataSource: dataSource)).disposed(by: rx.disposeBag)
+        output.selectedEvent.drive(onNext:{ [weak self] (item) in
+            switch item {
+            case .themeItem:
+                if let viewModel = viewModel.viewModel(for: item) as? ThemeViewModel {
+                   self?.navigator?.show(segue: .theme(viewModel: viewModel), sender: self, transition: .detail)
+                }
+            case .nightModeItem:break
+                
+            }
+        }).disposed(by: rx.disposeBag)
     }
 }

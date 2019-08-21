@@ -13,7 +13,7 @@ import RxDataSources
 import Kingfisher
 import Rswift
 class SettingsViewModel: ViewModel, ViewModelType {
-
+    
     struct Input {
         let trigger: Observable<Void>
         let selection: Driver<SettingsSectionItem>
@@ -21,6 +21,7 @@ class SettingsViewModel: ViewModel, ViewModelType {
     
     struct Output {
         let items: BehaviorRelay<[SettingsSection]>
+        let selectedEvent: Driver<SettingsSectionItem>
     }
     
     let nightModeEnabled: BehaviorRelay<Bool>
@@ -46,7 +47,7 @@ class SettingsViewModel: ViewModel, ViewModelType {
         let cacheSize = refresh.flatMapLatest { () -> Observable<Int> in
             return LibsManager.shared.kingfisherCacheSize()
         }
-    
+        
         Observable.combineLatest(refresh, cacheSize).map { [] (_, size) -> [SettingsSection] in
             var items: [SettingsSection] = []
             let nightModeEnabled = self.nightModeEnabled.value
@@ -54,12 +55,18 @@ class SettingsViewModel: ViewModel, ViewModelType {
                                                                     image: R.image.icon_cell_night_mode()?.template, hidesDisclosure: true, isEnabled: nightModeEnabled)
             nightModeCellViewModel.switchChanged.skip(1).bind(to: self.nightModeEnabled).disposed(by: self.cellDisposeBag)
             
-            items += [SettingsSection.setting(title:"123",
-                        items:[SettingsSectionItem.nightModeItem(viewModel:nightModeCellViewModel)])]
+            let themeCellViewModel = SettingCellViewModel(with: R.string.localizable.settingsThemeTitle.key.localized(), detail: nil,
+                                                          image: R.image.icon_cell_theme()?.template, hidesDisclosure: false)
+            
+            items += [SettingsSection.setting(title:R.string.localizable.settingsPreferencesSectionTitle.key.localized(),
+                                              items:[SettingsSectionItem.nightModeItem(viewModel:nightModeCellViewModel),
+                                                     SettingsSectionItem.themeItem(viewModel:themeCellViewModel)]
+                )]
             return items
             
-            
-        }.bind(to:elements).disposed(by:rx.disposeBag)
+            }.bind(to:elements).disposed(by:rx.disposeBag)
+        
+        let selectedEvent = input.selection
         
         nightModeEnabled.subscribe(onNext: { (isEnabled) in
             var theme = ThemeType.currentTheme()
@@ -68,8 +75,17 @@ class SettingsViewModel: ViewModel, ViewModelType {
             }
             themeService.switch(theme)
         }).disposed(by: rx.disposeBag)
-
         
-        return Output(items:elements)
+        
+        return Output(items: elements,selectedEvent:selectedEvent)
+    }
+    
+    func viewModel(for item: SettingsSectionItem) -> ViewModel? {
+        switch item {
+        case .themeItem:
+            return ThemeViewModel(provider:self.provider)
+        default:
+            return nil
+        }
     }
 }

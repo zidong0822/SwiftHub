@@ -17,6 +17,7 @@ class Navigator: NSObject {
     
     enum Scene {
         case tabs(viewModel: HomeTabBarViewModel)
+        case theme(viewModel: ThemeViewModel)
     }
     
     enum Transition {
@@ -34,7 +35,14 @@ class Navigator: NSObject {
         case .tabs(let viewModel):
             let rootVC = HomeTabBarController(viewModel: viewModel, navigator: self)
             return rootVC
+        case .theme(let viewModel):
+            let themeVC = ThemeViewController(viewModel:viewModel, navigator: self)
+            return themeVC
         }
+    }
+    
+    func dismiss(sender: UIViewController?) {
+        sender?.navigationController?.dismiss(animated: true, completion: nil)
     }
     
     func show(segue: Scene, sender: UIViewController?, transition: Transition = .navigation(type: .cover(direction: .left))) {
@@ -52,6 +60,23 @@ class Navigator: NSObject {
             return
         case .custom: return
         default: break
+        }
+        
+        guard let sender = sender else {
+            fatalError("You need to pass in a sender for .navigation or .modal transitions")
+        }
+        
+        switch transition {
+        case .navigation(let type):
+            if let nav = sender.navigationController {
+                nav.hero.navigationAnimationType = .autoReverse(presenting: type)
+                nav.pushViewController(target, animated: true)
+            }
+        case .detail:
+            let nav = NavigationController(rootViewController: target)
+            sender.showDetailViewController(nav, sender: nil)
+        default:
+            break
         }
     }
 }
