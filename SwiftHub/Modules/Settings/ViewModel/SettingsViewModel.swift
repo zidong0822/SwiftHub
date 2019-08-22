@@ -58,9 +58,13 @@ class SettingsViewModel: ViewModel, ViewModelType {
             let themeCellViewModel = SettingCellViewModel(with: R.string.localizable.settingsThemeTitle.key.localized(), detail: nil,
                                                           image: R.image.icon_cell_theme()?.template, hidesDisclosure: false)
             
+            let languageCellViewModel = SettingCellViewModel(with: R.string.localizable.settingsLanguageTitle.key.localized(), detail: nil,
+                                                             image: R.image.icon_cell_language()?.template, hidesDisclosure: false)
+            
             items += [SettingsSection.setting(title:R.string.localizable.settingsPreferencesSectionTitle.key.localized(),
-                                              items:[SettingsSectionItem.nightModeItem(viewModel:nightModeCellViewModel),
-                                                     SettingsSectionItem.themeItem(viewModel:themeCellViewModel)]
+                                              items:[SettingsSectionItem.nightModeItem(viewModel: nightModeCellViewModel),
+                                                     SettingsSectionItem.themeItem(viewModel: themeCellViewModel),
+                                                     SettingsSectionItem.languageItem(viewModel: languageCellViewModel)]
                 )]
             return items
             
@@ -83,7 +87,9 @@ class SettingsViewModel: ViewModel, ViewModelType {
     func viewModel(for item: SettingsSectionItem) -> ViewModel? {
         switch item {
         case .themeItem:
-            return ThemeViewModel(provider:self.provider)
+            return ThemeViewModel(provider: self.provider)
+        case .languageItem:
+            return LanguageViewModel(provider: self.provider)
         default:
             return nil
         }

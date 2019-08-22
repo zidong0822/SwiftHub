@@ -18,6 +18,7 @@ class Navigator: NSObject {
     enum Scene {
         case tabs(viewModel: HomeTabBarViewModel)
         case theme(viewModel: ThemeViewModel)
+        case language(viewModel: LanguageViewModel)
     }
     
     enum Transition {
@@ -36,8 +37,11 @@ class Navigator: NSObject {
             let rootVC = HomeTabBarController(viewModel: viewModel, navigator: self)
             return rootVC
         case .theme(let viewModel):
-            let themeVC = ThemeViewController(viewModel:viewModel, navigator: self)
+            let themeVC = ThemeViewController(viewModel: viewModel, navigator: self)
             return themeVC
+        case .language(let viewModel):
+            let languageVC = LanguageViewController(viewModel: viewModel, navigator: self)
+            return languageVC
         }
     }
     

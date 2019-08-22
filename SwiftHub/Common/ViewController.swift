@@ -10,6 +10,8 @@ import UIKit
 import NSObject_Rx
 import RxSwift
 import RxCocoa
+import Localize_Swift
+
 class ViewController: UIViewController {
 
     var viewModel: ViewModel?
@@ -29,6 +31,11 @@ class ViewController: UIViewController {
     var automaticallyAdjustsLeftBarButtonItem = true
     
     let languageChanged = BehaviorRelay<Void>(value: ())
+    
+    lazy var searchBar: SearchBar = {
+        let view = SearchBar()
+        return view
+    }()
     
     lazy var backBarButton: BarButtonItem = {
         let view = BarButtonItem()
@@ -73,6 +80,13 @@ class ViewController: UIViewController {
         closeBarButton.rx.tap.asObservable().subscribe(onNext: { [weak self] () in
             self?.navigator.dismiss(sender: self)
         }).disposed(by: rx.disposeBag)
+        
+        NotificationCenter.default
+            .rx.notification(NSNotification.Name(LCLLanguageChangeNotification))
+            .subscribe { [weak self] (event) in
+                self?.languageChanged.accept(())
+            }.disposed(by: rx.disposeBag)
+        
     }
     
     public override func viewWillAppear(_ animated: Bool) {

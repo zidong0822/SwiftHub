@@ -61,6 +61,14 @@
 		58D91BBC230D316C00ABA1CE /* ThemeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BBB230D316C00ABA1CE /* ThemeCellViewModel.swift */; };
 		58D91BBE230D348400ABA1CE /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BBD230D348400ABA1CE /* ThemeViewController.swift */; };
 		58D91BC1230D390D00ABA1CE /* BarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BC0230D390D00ABA1CE /* BarButtonItem.swift */; };
+		58D91BC7230E6D6500ABA1CE /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BC6230E6D6500ABA1CE /* LanguageViewController.swift */; };
+		58D91BCB230E6E5800ABA1CE /* LanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BC9230E6E5800ABA1CE /* LanguageCell.swift */; };
+		58D91BCC230E6E5800ABA1CE /* LanguageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58D91BCA230E6E5800ABA1CE /* LanguageCell.xib */; };
+		58D91BCF230E6EEF00ABA1CE /* LanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BCE230E6EEF00ABA1CE /* LanguageViewModel.swift */; };
+		58D91BD1230E703C00ABA1CE /* LanguageSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BD0230E703C00ABA1CE /* LanguageSection.swift */; };
+		58D91BD3230E707300ABA1CE /* LanguageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BD2230E707300ABA1CE /* LanguageCellViewModel.swift */; };
+		58D91BD5230E70BA00ABA1CE /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BD4230E70BA00ABA1CE /* Language.swift */; };
+		58D91BD7230E79EF00ABA1CE /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BD6230E79EF00ABA1CE /* SearchBar.swift */; };
 		AFA78AC4B2FBC9F48B092392 /* Pods_SwiftHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D71B9383927E6DEA0D8D3F9B /* Pods_SwiftHub.framework */; };
 		BD6106BCF9A01E9813EAD9AA /* Pods_SwiftHubTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9D3C6AAF9EF234DFA9E7B5 /* Pods_SwiftHubTests.framework */; };
 /* End PBXBuildFile section */
@@ -148,6 +156,14 @@
 		58D91BBB230D316C00ABA1CE /* ThemeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCellViewModel.swift; sourceTree = "<group>"; };
 		58D91BBD230D348400ABA1CE /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		58D91BC0230D390D00ABA1CE /* BarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButtonItem.swift; sourceTree = "<group>"; };
+		58D91BC6230E6D6500ABA1CE /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
+		58D91BC9230E6E5800ABA1CE /* LanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageCell.swift; sourceTree = "<group>"; };
+		58D91BCA230E6E5800ABA1CE /* LanguageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageCell.xib; sourceTree = "<group>"; };
+		58D91BCE230E6EEF00ABA1CE /* LanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewModel.swift; sourceTree = "<group>"; };
+		58D91BD0230E703C00ABA1CE /* LanguageSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSection.swift; sourceTree = "<group>"; };
+		58D91BD2230E707300ABA1CE /* LanguageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageCellViewModel.swift; sourceTree = "<group>"; };
+		58D91BD4230E70BA00ABA1CE /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		58D91BD6230E79EF00ABA1CE /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		70EB0089029B3268848D8EF2 /* Pods-SwiftHubTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHubTests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftHubTests/Pods-SwiftHubTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A4CD9F4B500E842A34328676 /* Pods-SwiftHubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHubTests.release.xcconfig"; path = "Target Support Files/Pods-SwiftHubTests/Pods-SwiftHubTests.release.xcconfig"; sourceTree = "<group>"; };
 		A5A7C160B8E810AA18DF1685 /* Pods-SwiftHubUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHubUITests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftHubUITests/Pods-SwiftHubUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -277,6 +293,7 @@
 				585E05802306861000204AD2 /* DefaultTableViewCellViewModel.swift */,
 				58D91BA4230BD40D00ABA1CE /* Switch.swift */,
 				58D91BC0230D390D00ABA1CE /* BarButtonItem.swift */,
+				58D91BD6230E79EF00ABA1CE /* SearchBar.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -338,6 +355,7 @@
 		585E051A230529CB00204AD2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				58D91BC4230E6D2F00ABA1CE /* Language */,
 				58D91BB1230D307700ABA1CE /* Theme */,
 				585E054223053CCF00204AD2 /* Login */,
 				585E053E23053C7000204AD2 /* Settings */,
@@ -549,6 +567,44 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		58D91BC4230E6D2F00ABA1CE /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				58D91BCD230E6EDC00ABA1CE /* Model */,
+				58D91BC8230E6E2700ABA1CE /* View */,
+				58D91BC5230E6D4100ABA1CE /* Controller */,
+			);
+			path = Language;
+			sourceTree = "<group>";
+		};
+		58D91BC5230E6D4100ABA1CE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				58D91BC6230E6D6500ABA1CE /* LanguageViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		58D91BC8230E6E2700ABA1CE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				58D91BC9230E6E5800ABA1CE /* LanguageCell.swift */,
+				58D91BCA230E6E5800ABA1CE /* LanguageCell.xib */,
+				58D91BD0230E703C00ABA1CE /* LanguageSection.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		58D91BCD230E6EDC00ABA1CE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				58D91BCE230E6EEF00ABA1CE /* LanguageViewModel.swift */,
+				58D91BD2230E707300ABA1CE /* LanguageCellViewModel.swift */,
+				58D91BD4230E70BA00ABA1CE /* Language.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C53D3C1D20B068DC4A77BB4C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -678,6 +734,7 @@
 				585E0557230557A600204AD2 /* Localizable.strings in Resources */,
 				585E04EC2305280000204AD2 /* Assets.xcassets in Resources */,
 				58D91BAF230BD6A300ABA1CE /* SettingSwitchCell.xib in Resources */,
+				58D91BCC230E6E5800ABA1CE /* LanguageCell.xib in Resources */,
 				58D91BB8230D30F200ABA1CE /* ThemeCell.xib in Resources */,
 				585E04EA230527FF00204AD2 /* Main.storyboard in Resources */,
 			);
@@ -827,6 +884,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				585E056F2306628300204AD2 /* TableViewController.swift in Sources */,
+				58D91BCB230E6E5800ABA1CE /* LanguageCell.swift in Sources */,
 				585E052A2305325100204AD2 /* Api.swift in Sources */,
 				585E05812306861000204AD2 /* DefaultTableViewCellViewModel.swift in Sources */,
 				58D91B9F230BD2C800ABA1CE /* SettingSwitchCellViewModel.swift in Sources */,
@@ -836,22 +894,28 @@
 				585E052123052F9800204AD2 /* Application.swift in Sources */,
 				585E051F23052E6C00204AD2 /* LibsManager.swift in Sources */,
 				585E05522305554C00204AD2 /* R.generated.swift in Sources */,
+				58D91BD5230E70BA00ABA1CE /* Language.swift in Sources */,
 				58D91BAE230BD6A300ABA1CE /* SettingSwitchCell.swift in Sources */,
 				58D91B94230695C900ABA1CE /* SettingsSection.swift in Sources */,
 				58D91BBE230D348400ABA1CE /* ThemeViewController.swift in Sources */,
 				585E053B23053C2100204AD2 /* NotificationsViewController.swift in Sources */,
+				58D91BCF230E6EEF00ABA1CE /* LanguageViewModel.swift in Sources */,
 				58D91BC1230D390D00ABA1CE /* BarButtonItem.swift in Sources */,
 				585E057D230684E900204AD2 /* Label.swift in Sources */,
 				585E052D2305374300204AD2 /* HomeTabBarController.swift in Sources */,
 				585E05752306779A00204AD2 /* StackView.swift in Sources */,
+				58D91BD3230E707300ABA1CE /* LanguageCellViewModel.swift in Sources */,
 				58D91BBC230D316C00ABA1CE /* ThemeCellViewModel.swift in Sources */,
 				585E053323053A0600204AD2 /* ViewController.swift in Sources */,
+				58D91BC7230E6D6500ABA1CE /* LanguageViewController.swift in Sources */,
 				585E054123053C8900204AD2 /* SettingsViewController.swift in Sources */,
 				585E05772306840700204AD2 /* TableViewCell.swift in Sources */,
+				58D91BD1230E703C00ABA1CE /* LanguageSection.swift in Sources */,
 				585E05792306848A00204AD2 /* DefaultTableViewCell.swift in Sources */,
 				585E053823053BD800204AD2 /* EventsViewController.swift in Sources */,
 				585E04E5230527FF00204AD2 /* AppDelegate.swift in Sources */,
 				58D91BA5230BD40D00ABA1CE /* Switch.swift in Sources */,
+				58D91BD7230E79EF00ABA1CE /* SearchBar.swift in Sources */,
 				585E0571230662D600204AD2 /* TableView.swift in Sources */,
 				585E051D23052A6300204AD2 /* Configs.swift in Sources */,
 				585E05632305627900204AD2 /* RestApi.swift in Sources */,

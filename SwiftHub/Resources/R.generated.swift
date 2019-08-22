@@ -42,10 +42,12 @@ struct R: Rswift.Validatable {
   }
   #endif
   
-  /// This `R.image` struct is generated, and contains static references to 14 images.
+  /// This `R.image` struct is generated, and contains static references to 15 images.
   struct image {
     /// Image `icon_cell_disclosure`.
     static let icon_cell_disclosure = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_disclosure")
+    /// Image `icon_cell_language`.
+    static let icon_cell_language = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_language")
     /// Image `icon_cell_night_mode`.
     static let icon_cell_night_mode = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_night_mode")
     /// Image `icon_cell_theme`.
@@ -77,6 +79,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "icon_cell_disclosure", bundle: ..., traitCollection: ...)`
     static func icon_cell_disclosure(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_cell_disclosure, compatibleWith: traitCollection)
+    }
+    #endif
+    
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "icon_cell_language", bundle: ..., traitCollection: ...)`
+    static func icon_cell_language(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_cell_language, compatibleWith: traitCollection)
     }
     #endif
     
@@ -174,14 +183,24 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 3 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 4 nibs.
   struct nib {
+    /// Nib `LanguageCell`.
+    static let languageCell = _R.nib._LanguageCell()
     /// Nib `SettingCell`.
     static let settingCell = _R.nib._SettingCell()
     /// Nib `SettingSwitchCell`.
     static let settingSwitchCell = _R.nib._SettingSwitchCell()
     /// Nib `ThemeCell`.
     static let themeCell = _R.nib._ThemeCell()
+    
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "LanguageCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.languageCell) instead")
+    static func languageCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.languageCell)
+    }
+    #endif
     
     #if os(iOS) || os(tvOS)
     /// `UINib(name: "SettingCell", in: bundle)`
@@ -207,6 +226,10 @@ struct R: Rswift.Validatable {
     }
     #endif
     
+    static func languageCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> LanguageCell? {
+      return R.nib.languageCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? LanguageCell
+    }
+    
     static func settingCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SettingCell? {
       return R.nib.settingCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SettingCell
     }
@@ -222,12 +245,14 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 3 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 4 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `SettingCell`.
     static let settingCell: Rswift.ReuseIdentifier<SettingCell> = Rswift.ReuseIdentifier(identifier: "SettingCell")
     /// Reuse identifier `SettingSwitchCell`.
     static let settingSwitchCell: Rswift.ReuseIdentifier<SettingSwitchCell> = Rswift.ReuseIdentifier(identifier: "SettingSwitchCell")
+    /// Reuse identifier `languageCell`.
+    static let languageCell: Rswift.ReuseIdentifier<LanguageCell> = Rswift.ReuseIdentifier(identifier: "languageCell")
     /// Reuse identifier `themeCell`.
     static let themeCell: Rswift.ReuseIdentifier<ThemeCell> = Rswift.ReuseIdentifier(identifier: "themeCell")
     
@@ -267,10 +292,34 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en, zh-Hans
       static let settingsBannerTitle = Rswift.StringResource(key: "Settings.Banner.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: All
+      /// 
+      /// Locales: en, zh-Hans
+      static let languagesAllSectionTitle = Rswift.StringResource(key: "Languages.AllSection.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: All
+      /// 
+      /// Locales: en, zh-Hans
+      static let notificationsAllSegmentTitle = Rswift.StringResource(key: "Notifications.AllSegment.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: All Languages
+      /// 
+      /// Locales: en, zh-Hans
+      static let languagesAllButtonTitle = Rswift.StringResource(key: "Languages.allButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: All notifications marked as read
+      /// 
+      /// Locales: en, zh-Hans
+      static let notificationsMarkAsReadSuccess = Rswift.StringResource(key: "Notifications.MarkAsRead.Success", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Are you sure want to log out from SwiftHub?
       /// 
       /// Locales: en, zh-Hans
       static let settingsLogoutAlertMessage = Rswift.StringResource(key: "Settings.Logout.Alert.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Back
+      /// 
+      /// Locales: en, zh-Hans
+      static let commonBack = Rswift.StringResource(key: "Common.Back", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Basic
+      /// 
+      /// Locales: en, zh-Hans
+      static let loginBasicSegmentTitle = Rswift.StringResource(key: "Login.BasicSegment.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Best match
       /// 
       /// Locales: en, zh-Hans
@@ -279,26 +328,98 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en, zh-Hans
       static let searchSortUsersBestMatchTitle = Rswift.StringResource(key: "Search.SortUsers.BestMatch.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Blog
+      /// 
+      /// Locales: en, zh-Hans
+      static let userBlogCellTitle = Rswift.StringResource(key: "User.BlogCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Branches
+      /// 
+      /// Locales: en, zh-Hans
+      static let repositoryBranchesCellTitle = Rswift.StringResource(key: "Repository.BranchesCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Cache Successfully Cleared
       /// 
       /// Locales: en, zh-Hans
       static let settingsRemoveCacheAlertSuccessMessage = Rswift.StringResource(key: "Settings.RemoveCache.Alert.SuccessMessage", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Cancel
+      /// 
+      /// Locales: en, zh-Hans
+      static let commonCancel = Rswift.StringResource(key: "Common.Cancel", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Close
+      /// 
+      /// Locales: en, zh-Hans
+      static let commonClose = Rswift.StringResource(key: "Common.Close", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Closed
+      /// 
+      /// Locales: en, zh-Hans
+      static let issuesClosedSegmentTitle = Rswift.StringResource(key: "Issues.ClosedSegment.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Color theme
       /// 
       /// Locales: en, zh-Hans
       static let settingsThemeTitle = Rswift.StringResource(key: "Settings.Theme.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Color theme
+      /// 
+      /// Locales: en, zh-Hans
+      static let themeNavigationTitle = Rswift.StringResource(key: "Theme.Navigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Commits
+      /// 
+      /// Locales: en, zh-Hans
+      static let repositoryCommitsCellTitle = Rswift.StringResource(key: "Repository.CommitsCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Company
+      /// 
+      /// Locales: en, zh-Hans
+      static let userCompanyCellTitle = Rswift.StringResource(key: "User.CompanyCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Continue
       /// 
       /// Locales: en, zh-Hans
       static let whatsNewCompletionButtonTitle = Rswift.StringResource(key: "WhatsNew.CompletionButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Contributors
+      /// 
+      /// Locales: en, zh-Hans
+      static let repositoryContributorsCellTitle = Rswift.StringResource(key: "Repository.ContributorsCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Contributors
+      /// 
+      /// Locales: en, zh-Hans
+      static let usersContributorsNavigationTitle = Rswift.StringResource(key: "Users.ContributorsNavigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Created
+      /// 
+      /// Locales: en, zh-Hans
+      static let repositoryCreatedCellTitle = Rswift.StringResource(key: "Repository.CreatedCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Daily
       /// 
       /// Locales: en, zh-Hans
       static let searchDailySegmentTitle = Rswift.StringResource(key: "Search.DailySegment.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Delete
+      /// 
+      /// Locales: en, zh-Hans
+      static let commonDelete = Rswift.StringResource(key: "Common.Delete", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Done
+      /// 
+      /// Locales: en, zh-Hans
+      static let commonDone = Rswift.StringResource(key: "Common.Done", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Edit
+      /// 
+      /// Locales: en, zh-Hans
+      static let commonEdit = Rswift.StringResource(key: "Common.Edit", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Error
+      /// 
+      /// Locales: en, zh-Hans
+      static let commonError = Rswift.StringResource(key: "Common.Error", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Events
+      /// 
+      /// Locales: en, zh-Hans
+      static let eventsNavigationTitle = Rswift.StringResource(key: "Events.Navigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Events
       /// 
       /// Locales: en, zh-Hans
       static let homeTabBarEventsTitle = Rswift.StringResource(key: "Home.TabBar.Events.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Events
+      /// 
+      /// Locales: en, zh-Hans
+      static let repositoryEventsCellTitle = Rswift.StringResource(key: "Repository.EventsCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Events
+      /// 
+      /// Locales: en, zh-Hans
+      static let userEventsCellTitle = Rswift.StringResource(key: "User.EventsCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Fewest followers
       /// 
       /// Locales: en, zh-Hans
@@ -315,18 +436,78 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en, zh-Hans
       static let searchSortRepositoriesFewestStarsTitle = Rswift.StringResource(key: "Search.SortRepositories.FewestStars.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Followers
+      /// 
+      /// Locales: en, zh-Hans
+      static let userFollowersButtonTitle = Rswift.StringResource(key: "User.FollowersButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Followers
+      /// 
+      /// Locales: en, zh-Hans
+      static let usersFollowersNavigationTitle = Rswift.StringResource(key: "Users.FollowersNavigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Following
+      /// 
+      /// Locales: en, zh-Hans
+      static let userFollowingButtonTitle = Rswift.StringResource(key: "User.FollowingButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Following
+      /// 
+      /// Locales: en, zh-Hans
+      static let usersFollowingNavigationTitle = Rswift.StringResource(key: "Users.FollowingNavigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: For API requests using Basic Authentication or OAuth, you can make up to 5000 requests per hour.   For unauthenticated requests, the rate limit allows for up to 60 requests per hour.
+      /// 
+      /// Locales: en, zh-Hans
+      static let loginDetailLabelText = Rswift.StringResource(key: "Login.DetailLabel.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Forked from
+      /// 
+      /// Locales: en, zh-Hans
+      static let repositoryParentCellTitle = Rswift.StringResource(key: "Repository.ParentCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Forks
+      /// 
+      /// Locales: en, zh-Hans
+      static let repositoriesForksNavigationTitle = Rswift.StringResource(key: "Repositories.ForksNavigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Forks
+      /// 
+      /// Locales: en, zh-Hans
+      static let repositoryForksButtonTitle = Rswift.StringResource(key: "Repository.ForksButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Global Search
       /// 
       /// Locales: en, zh-Hans
       static let searchSearchBarPlaceholder = Rswift.StringResource(key: "Search.SearchBar.Placeholder", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Homepage
+      /// 
+      /// Locales: en, zh-Hans
+      static let repositoryHomepageCellTitle = Rswift.StringResource(key: "Repository.HomepageCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Invite friends
+      /// 
+      /// Locales: en, zh-Hans
+      static let contactsNavigationTitle = Rswift.StringResource(key: "Contacts.Navigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Invite friends
       /// 
       /// Locales: en, zh-Hans
       static let settingsContactsTitle = Rswift.StringResource(key: "Settings.Contacts.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Issues
+      /// 
+      /// Locales: en, zh-Hans
+      static let issuesNavigationTitle = Rswift.StringResource(key: "Issues.Navigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Issues
+      /// 
+      /// Locales: en, zh-Hans
+      static let repositoryIssuesCellTitle = Rswift.StringResource(key: "Repository.IssuesCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Language
+      /// 
+      /// Locales: en, zh-Hans
+      static let languageNavigationTitle = Rswift.StringResource(key: "Language.Navigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Language
+      /// 
+      /// Locales: en, zh-Hans
+      static let repositoryLanguageCellTitle = Rswift.StringResource(key: "Repository.LanguageCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Language
       /// 
       /// Locales: en, zh-Hans
       static let settingsLanguageTitle = Rswift.StringResource(key: "Settings.Language.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Languages
+      /// 
+      /// Locales: en, zh-Hans
+      static let languagesNavigationTitle = Rswift.StringResource(key: "Languages.Navigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Last recently updated
       /// 
       /// Locales: en, zh-Hans
@@ -343,6 +524,10 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en, zh-Hans
       static let homeTabBarLoginTitle = Rswift.StringResource(key: "Home.TabBar.Login.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Login
+      /// 
+      /// Locales: en, zh-Hans
+      static let loginBasicLoginButtonTitle = Rswift.StringResource(key: "Login.BasicLoginButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Logout
       /// 
       /// Locales: en, zh-Hans
@@ -371,18 +556,74 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en, zh-Hans
       static let searchSortRepositoriesMostStarsTitle = Rswift.StringResource(key: "Search.SortRepositories.MostStars.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: My Notifications
+      /// 
+      /// Locales: en, zh-Hans
+      static let repositoryNotificationsCellTitle = Rswift.StringResource(key: "Repository.NotificationsCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: My Projects
       /// 
       /// Locales: en, zh-Hans
       static let settingsProjectsSectionTitle = Rswift.StringResource(key: "Settings.ProjectsSection.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Next
+      /// 
+      /// Locales: en, zh-Hans
+      static let commonNext = Rswift.StringResource(key: "Common.Next", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Night mode
       /// 
       /// Locales: en, zh-Hans
       static let settingsNightModeTitle = Rswift.StringResource(key: "Settings.NightMode.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: No
+      /// 
+      /// Locales: en, zh-Hans
+      static let commonNo = Rswift.StringResource(key: "Common.No", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: No Results
+      /// 
+      /// Locales: en, zh-Hans
+      static let commonNoResults = Rswift.StringResource(key: "Common.NoResults", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Notifications
+      /// 
+      /// Locales: en, zh-Hans
+      static let notificationsNavigationTitle = Rswift.StringResource(key: "Notifications.Navigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: OAuth
+      /// 
+      /// Locales: en, zh-Hans
+      static let loginOAuthSegmentTitle = Rswift.StringResource(key: "Login.OAuthSegment.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: OK
+      /// 
+      /// Locales: en, zh-Hans
+      static let commonOK = Rswift.StringResource(key: "Common.OK", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Open
+      /// 
+      /// Locales: en, zh-Hans
+      static let issuesOpenSegmentTitle = Rswift.StringResource(key: "Issues.OpenSegment.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Open Source
       /// 
       /// Locales: en, zh-Hans
       static let whatsNewItem3Title = Rswift.StringResource(key: "WhatsNew.Item3.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Organizations
+      /// 
+      /// Locales: en, zh-Hans
+      static let userOrganizationsSectionTitle = Rswift.StringResource(key: "User.OrganizationsSection.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Participating
+      /// 
+      /// Locales: en, zh-Hans
+      static let notificationsParticipatingSegmentTitle = Rswift.StringResource(key: "Notifications.ParticipatingSegment.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Performed
+      /// 
+      /// Locales: en, zh-Hans
+      static let eventsPerformedSegmentTitle = Rswift.StringResource(key: "Events.PerformedSegment.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Pinned
+      /// 
+      /// Locales: en, zh-Hans
+      static let userPinnedSectionTitle = Rswift.StringResource(key: "User.PinnedSection.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Please check your login or password
+      /// 
+      /// Locales: en, zh-Hans
+      static let loginLoginFailedDescription = Rswift.StringResource(key: "Login.LoginFailed.Description", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Popular
+      /// 
+      /// Locales: en, zh-Hans
+      static let languagesPopularSectionTitle = Rswift.StringResource(key: "Languages.PopularSection.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Preferences
       /// 
       /// Locales: en, zh-Hans
@@ -391,10 +632,30 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en, zh-Hans
       static let homeTabBarProfileTitle = Rswift.StringResource(key: "Home.TabBar.Profile.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Profile Summary
+      /// 
+      /// Locales: en, zh-Hans
+      static let userProfileSummaryCellTitle = Rswift.StringResource(key: "User.ProfileSummaryCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Pull Requests
+      /// 
+      /// Locales: en, zh-Hans
+      static let repositoryPullRequestsCellTitle = Rswift.StringResource(key: "Repository.PullRequestsCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Readme
+      /// 
+      /// Locales: en, zh-Hans
+      static let repositoryReadmeCellTitle = Rswift.StringResource(key: "Repository.ReadmeCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Received
+      /// 
+      /// Locales: en, zh-Hans
+      static let eventsReceivedSegmentTitle = Rswift.StringResource(key: "Events.ReceivedSegment.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Recently updated
       /// 
       /// Locales: en, zh-Hans
       static let searchSortRepositoriesRecentlyUpdatedTitle = Rswift.StringResource(key: "Search.SortRepositories.RecentlyUpdated.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Releases
+      /// 
+      /// Locales: en, zh-Hans
+      static let repositoryReleasesCellTitle = Rswift.StringResource(key: "Repository.ReleasesCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Remove cache
       /// 
       /// Locales: en, zh-Hans
@@ -402,7 +663,27 @@ struct R: Rswift.Validatable {
       /// en translation: Repositories
       /// 
       /// Locales: en, zh-Hans
+      static let repositoriesRepositoriesNavigationTitle = Rswift.StringResource(key: "Repositories.RepositoriesNavigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Repositories
+      /// 
+      /// Locales: en, zh-Hans
       static let searchRepositoriesSegmentTitle = Rswift.StringResource(key: "Search.RepositoriesSegment.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Repositories
+      /// 
+      /// Locales: en, zh-Hans
+      static let userRepositoriesButtonTitle = Rswift.StringResource(key: "User.RepositoriesButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Reset
+      /// 
+      /// Locales: en, zh-Hans
+      static let commonReset = Rswift.StringResource(key: "Common.Reset", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Save
+      /// 
+      /// Locales: en, zh-Hans
+      static let commonSave = Rswift.StringResource(key: "Common.Save", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Search
+      /// 
+      /// Locales: en, zh-Hans
+      static let commonSearch = Rswift.StringResource(key: "Common.Search", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Search
       /// 
       /// Locales: en, zh-Hans
@@ -426,11 +707,55 @@ struct R: Rswift.Validatable {
       /// en translation: Settings
       /// 
       /// Locales: en, zh-Hans
+      static let contactsPermissionDeniedButton = Rswift.StringResource(key: "Contacts.PermissionDenied.Button", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Settings
+      /// 
+      /// Locales: en, zh-Hans
       static let homeTabBarSettingsTitle = Rswift.StringResource(key: "Home.TabBar.Settings.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Settings
       /// 
       /// Locales: en, zh-Hans
       static let settingsNavigationTitle = Rswift.StringResource(key: "Settings.Navigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Sign in with Github
+      /// 
+      /// Locales: en, zh-Hans
+      static let loginOAuthloginButtonTitle = Rswift.StringResource(key: "Login.OAuthloginButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Size
+      /// 
+      /// Locales: en, zh-Hans
+      static let repositorySizeCellTitle = Rswift.StringResource(key: "Repository.SizeCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Skip
+      /// 
+      /// Locales: en, zh-Hans
+      static let commonSkip = Rswift.StringResource(key: "Common.Skip", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Source Code
+      /// 
+      /// Locales: en, zh-Hans
+      static let repositorySourceCellTitle = Rswift.StringResource(key: "Repository.SourceCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Stargazers
+      /// 
+      /// Locales: en, zh-Hans
+      static let usersStargazersNavigationTitle = Rswift.StringResource(key: "Users.StargazersNavigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Starred
+      /// 
+      /// Locales: en, zh-Hans
+      static let repositoriesStarredNavigationTitle = Rswift.StringResource(key: "Repositories.StarredNavigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Stars
+      /// 
+      /// Locales: en, zh-Hans
+      static let repositoryStarsButtonTitle = Rswift.StringResource(key: "Repository.StarsButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Stars
+      /// 
+      /// Locales: en, zh-Hans
+      static let userStarsCellTitle = Rswift.StringResource(key: "User.StarsCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Stars History
+      /// 
+      /// Locales: en, zh-Hans
+      static let repositoryStarsHistoryCellTitle = Rswift.StringResource(key: "Repository.StarsHistoryCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Success
+      /// 
+      /// Locales: en, zh-Hans
+      static let commonSuccess = Rswift.StringResource(key: "Common.Success", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Support
       /// 
       /// Locales: en, zh-Hans
@@ -459,6 +784,14 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en, zh-Hans
       static let searchTrendingSectionWithLanguageTitle = Rswift.StringResource(key: "Search.TrendingSectionWithLanguage.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Unread
+      /// 
+      /// Locales: en, zh-Hans
+      static let notificationsUnreadSegmentTitle = Rswift.StringResource(key: "Notifications.UnreadSegment.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Updated
+      /// 
+      /// Locales: en, zh-Hans
+      static let repositoryUpdatedCellTitle = Rswift.StringResource(key: "Repository.UpdatedCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Users
       /// 
       /// Locales: en, zh-Hans
@@ -467,10 +800,38 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en, zh-Hans
       static let whatsNewDetailButtonTitle = Rswift.StringResource(key: "WhatsNew.DetailButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Watchers
+      /// 
+      /// Locales: en, zh-Hans
+      static let repositoryWatchersButtonTitle = Rswift.StringResource(key: "Repository.WatchersButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Watchers
+      /// 
+      /// Locales: en, zh-Hans
+      static let usersWatchersNavigationTitle = Rswift.StringResource(key: "Users.WatchersNavigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Watching
+      /// 
+      /// Locales: en, zh-Hans
+      static let userWatchingCellTitle = Rswift.StringResource(key: "User.WatchingCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: We can't continue without your  permission to access your contacts.  Try Again?
+      /// 
+      /// Locales: en, zh-Hans
+      static let contactsPermissionDeniedDescription = Rswift.StringResource(key: "Contacts.PermissionDenied.Description", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: We need your permission!
+      /// 
+      /// Locales: en, zh-Hans
+      static let contactsPermissionDeniedTitle = Rswift.StringResource(key: "Contacts.PermissionDenied.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Weekly
       /// 
       /// Locales: en, zh-Hans
       static let searchWeeklySegmentTitle = Rswift.StringResource(key: "Search.WeeklySegment.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Welcome to SwiftHub
+      /// 
+      /// Locales: en, zh-Hans
+      static let loginTitleLabelText = Rswift.StringResource(key: "Login.TitleLabel.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Welcome to SwiftHub!
+      /// 
+      /// Locales: en, zh-Hans
+      static let initialNoResults = Rswift.StringResource(key: "Initial.NoResults", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Whats New
       /// 
       /// Locales: en, zh-Hans
@@ -487,358 +848,22 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en, zh-Hans
       static let whatsNewItem1Subtitle = Rswift.StringResource(key: "WhatsNew.Item1.Subtitle", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Yes
+      /// 
+      /// Locales: en, zh-Hans
+      static let commonYes = Rswift.StringResource(key: "Common.Yes", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: You can apply different themes with Light and Dark modes
       /// 
       /// Locales: en, zh-Hans
       static let whatsNewItem2Subtitle = Rswift.StringResource(key: "WhatsNew.Item2.Subtitle", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
-      /// zh-Hans translation: OAuth认证
+      /// en translation: login
       /// 
-      /// Locales: zh-Hans
-      static let loginOAuthSegmentTitle = Rswift.StringResource(key: "Login.OAuthSegment.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 下一步
+      /// Locales: en, zh-Hans
+      static let loginLoginTextFieldPlaceholder = Rswift.StringResource(key: "Login.LoginTextField.Placeholder", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: password
       /// 
-      /// Locales: zh-Hans
-      static let commonNext = Rswift.StringResource(key: "Common.Next", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 主页
-      /// 
-      /// Locales: zh-Hans
-      static let repositoryHomepageCellTitle = Rswift.StringResource(key: "Repository.HomepageCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 事件
-      /// 
-      /// Locales: zh-Hans
-      static let repositoryEventsCellTitle = Rswift.StringResource(key: "Repository.EventsCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 事件
-      /// 
-      /// Locales: zh-Hans
-      static let userEventsCellTitle = Rswift.StringResource(key: "User.EventsCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 仓库
-      /// 
-      /// Locales: zh-Hans
-      static let repositoriesRepositoriesNavigationTitle = Rswift.StringResource(key: "Repositories.RepositoriesNavigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 使用 Github 登录
-      /// 
-      /// Locales: zh-Hans
-      static let loginOAuthloginButtonTitle = Rswift.StringResource(key: "Login.OAuthloginButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 保存
-      /// 
-      /// Locales: zh-Hans
-      static let commonSave = Rswift.StringResource(key: "Common.Save", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 全部
-      /// 
-      /// Locales: zh-Hans
-      static let languagesAllSectionTitle = Rswift.StringResource(key: "Languages.AllSection.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 全部
-      /// 
-      /// Locales: zh-Hans
-      static let notificationsAllSegmentTitle = Rswift.StringResource(key: "Notifications.AllSegment.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 公司
-      /// 
-      /// Locales: zh-Hans
-      static let userCompanyCellTitle = Rswift.StringResource(key: "User.CompanyCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 关注
-      /// 
-      /// Locales: zh-Hans
-      static let userFollowingButtonTitle = Rswift.StringResource(key: "User.FollowingButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 关注
-      /// 
-      /// Locales: zh-Hans
-      static let usersFollowingNavigationTitle = Rswift.StringResource(key: "Users.FollowingNavigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 关闭
-      /// 
-      /// Locales: zh-Hans
-      static let commonClose = Rswift.StringResource(key: "Common.Close", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 创建的内容
-      /// 
-      /// Locales: zh-Hans
-      static let repositoryCreatedCellTitle = Rswift.StringResource(key: "Repository.CreatedCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 删除
-      /// 
-      /// Locales: zh-Hans
-      static let commonDelete = Rswift.StringResource(key: "Common.Delete", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 博客
-      /// 
-      /// Locales: zh-Hans
-      static let userBlogCellTitle = Rswift.StringResource(key: "User.BlogCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 参与
-      /// 
-      /// Locales: zh-Hans
-      static let notificationsParticipatingSegmentTitle = Rswift.StringResource(key: "Notifications.ParticipatingSegment.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 取消
-      /// 
-      /// Locales: zh-Hans
-      static let commonCancel = Rswift.StringResource(key: "Common.Cancel", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 否
-      /// 
-      /// Locales: zh-Hans
-      static let commonNo = Rswift.StringResource(key: "Common.No", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 基本认证
-      /// 
-      /// Locales: zh-Hans
-      static let loginBasicSegmentTitle = Rswift.StringResource(key: "Login.BasicSegment.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 复制仓库
-      /// 
-      /// Locales: zh-Hans
-      static let repositoriesForksNavigationTitle = Rswift.StringResource(key: "Repositories.ForksNavigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 复制仓库
-      /// 
-      /// Locales: zh-Hans
-      static let repositoryForksButtonTitle = Rswift.StringResource(key: "Repository.ForksButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 复制仓库的来源
-      /// 
-      /// Locales: zh-Hans
-      static let repositoryParentCellTitle = Rswift.StringResource(key: "Repository.ParentCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 大小
-      /// 
-      /// Locales: zh-Hans
-      static let repositorySizeCellTitle = Rswift.StringResource(key: "Repository.SizeCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 好的
-      /// 
-      /// Locales: zh-Hans
-      static let commonOK = Rswift.StringResource(key: "Common.OK", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 存储库
-      /// 
-      /// Locales: zh-Hans
-      static let userRepositoriesButtonTitle = Rswift.StringResource(key: "User.RepositoriesButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 完成
-      /// 
-      /// Locales: zh-Hans
-      static let commonDone = Rswift.StringResource(key: "Common.Done", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 密码
-      /// 
-      /// Locales: zh-Hans
-      static let loginPasswordTextFieldPlaceholder = Rswift.StringResource(key: "Login.PasswordTextField.Placeholder", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 对于使用基本身份验证或 OAuth 的API请求，您每小时最多可以发出5000次请求。   对于未认证的请求,它限制您每小时请求最多60次请求。
-      /// 
-      /// Locales: zh-Hans
-      static let loginDetailLabelText = Rswift.StringResource(key: "Login.DetailLabel.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 已关闭
-      /// 
-      /// Locales: zh-Hans
-      static let issuesClosedSegmentTitle = Rswift.StringResource(key: "Issues.ClosedSegment.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 已发布
-      /// 
-      /// Locales: zh-Hans
-      static let repositoryReleasesCellTitle = Rswift.StringResource(key: "Repository.ReleasesCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 成功
-      /// 
-      /// Locales: zh-Hans
-      static let commonSuccess = Rswift.StringResource(key: "Common.Success", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 我们需要你的许可！
-      /// 
-      /// Locales: zh-Hans
-      static let contactsPermissionDeniedTitle = Rswift.StringResource(key: "Contacts.PermissionDenied.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 我的通知
-      /// 
-      /// Locales: zh-Hans
-      static let repositoryNotificationsCellTitle = Rswift.StringResource(key: "Repository.NotificationsCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 所有分支
-      /// 
-      /// Locales: zh-Hans
-      static let repositoryBranchesCellTitle = Rswift.StringResource(key: "Repository.BranchesCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 所有语言
-      /// 
-      /// Locales: zh-Hans
-      static let languagesAllButtonTitle = Rswift.StringResource(key: "Languages.allButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 所有通知都标记为已读
-      /// 
-      /// Locales: zh-Hans
-      static let notificationsMarkAsReadSuccess = Rswift.StringResource(key: "Notifications.MarkAsRead.Success", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 打星
-      /// 
-      /// Locales: zh-Hans
-      static let repositoriesStarredNavigationTitle = Rswift.StringResource(key: "Repositories.StarredNavigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 打星历史
-      /// 
-      /// Locales: zh-Hans
-      static let repositoryStarsHistoryCellTitle = Rswift.StringResource(key: "Repository.StarsHistoryCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 执行
-      /// 
-      /// Locales: zh-Hans
-      static let eventsPerformedSegmentTitle = Rswift.StringResource(key: "Events.PerformedSegment.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 拉取请求
-      /// 
-      /// Locales: zh-Hans
-      static let repositoryPullRequestsCellTitle = Rswift.StringResource(key: "Repository.PullRequestsCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 提交
-      /// 
-      /// Locales: zh-Hans
-      static let repositoryCommitsCellTitle = Rswift.StringResource(key: "Repository.CommitsCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 搜索
-      /// 
-      /// Locales: zh-Hans
-      static let commonSearch = Rswift.StringResource(key: "Common.Search", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 收到
-      /// 
-      /// Locales: zh-Hans
-      static let eventsReceivedSegmentTitle = Rswift.StringResource(key: "Events.ReceivedSegment.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 星星
-      /// 
-      /// Locales: zh-Hans
-      static let repositoryStarsButtonTitle = Rswift.StringResource(key: "Repository.StarsButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 星星
-      /// 
-      /// Locales: zh-Hans
-      static let userStarsCellTitle = Rswift.StringResource(key: "User.StarsCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 是
-      /// 
-      /// Locales: zh-Hans
-      static let commonYes = Rswift.StringResource(key: "Common.Yes", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 更新的内容
-      /// 
-      /// Locales: zh-Hans
-      static let repositoryUpdatedCellTitle = Rswift.StringResource(key: "Repository.UpdatedCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 未经您的许可， 我们无法继续访问您的联系人。  再试一次？
-      /// 
-      /// Locales: zh-Hans
-      static let contactsPermissionDeniedDescription = Rswift.StringResource(key: "Contacts.PermissionDenied.Description", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 未读
-      /// 
-      /// Locales: zh-Hans
-      static let notificationsUnreadSegmentTitle = Rswift.StringResource(key: "Notifications.UnreadSegment.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 欢迎来到 SwiftHub 
-      /// 
-      /// Locales: zh-Hans
-      static let loginTitleLabelText = Rswift.StringResource(key: "Login.TitleLabel.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 欢迎来到 SwiftHub ！
-      /// 
-      /// Locales: zh-Hans
-      static let initialNoResults = Rswift.StringResource(key: "Initial.NoResults", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 正在看
-      /// 
-      /// Locales: zh-Hans
-      static let userWatchingCellTitle = Rswift.StringResource(key: "User.WatchingCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 没有结果
-      /// 
-      /// Locales: zh-Hans
-      static let commonNoResults = Rswift.StringResource(key: "Common.NoResults", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 活动
-      /// 
-      /// Locales: zh-Hans
-      static let eventsNavigationTitle = Rswift.StringResource(key: "Events.Navigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 源代码
-      /// 
-      /// Locales: zh-Hans
-      static let repositorySourceCellTitle = Rswift.StringResource(key: "Repository.SourceCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 热门
-      /// 
-      /// Locales: zh-Hans
-      static let languagesPopularSectionTitle = Rswift.StringResource(key: "Languages.PopularSection.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 登录
-      /// 
-      /// Locales: zh-Hans
-      static let loginBasicLoginButtonTitle = Rswift.StringResource(key: "Login.BasicLoginButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 登录
-      /// 
-      /// Locales: zh-Hans
-      static let loginLoginTextFieldPlaceholder = Rswift.StringResource(key: "Login.LoginTextField.Placeholder", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 看守
-      /// 
-      /// Locales: zh-Hans
-      static let usersWatchersNavigationTitle = Rswift.StringResource(key: "Users.WatchersNavigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 组织
-      /// 
-      /// Locales: zh-Hans
-      static let userOrganizationsSectionTitle = Rswift.StringResource(key: "User.OrganizationsSection.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 编辑
-      /// 
-      /// Locales: zh-Hans
-      static let commonEdit = Rswift.StringResource(key: "Common.Edit", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 置顶
-      /// 
-      /// Locales: zh-Hans
-      static let userPinnedSectionTitle = Rswift.StringResource(key: "User.PinnedSection.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 自述
-      /// 
-      /// Locales: zh-Hans
-      static let repositoryReadmeCellTitle = Rswift.StringResource(key: "Repository.ReadmeCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 观察员
-      /// 
-      /// Locales: zh-Hans
-      static let repositoryWatchersButtonTitle = Rswift.StringResource(key: "Repository.WatchersButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 观星者
-      /// 
-      /// Locales: zh-Hans
-      static let usersStargazersNavigationTitle = Rswift.StringResource(key: "Users.StargazersNavigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 设置
-      /// 
-      /// Locales: zh-Hans
-      static let contactsPermissionDeniedButton = Rswift.StringResource(key: "Contacts.PermissionDenied.Button", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 语言
-      /// 
-      /// Locales: zh-Hans
-      static let languageNavigationTitle = Rswift.StringResource(key: "Language.Navigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 语言
-      /// 
-      /// Locales: zh-Hans
-      static let languagesNavigationTitle = Rswift.StringResource(key: "Languages.Navigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 语言
-      /// 
-      /// Locales: zh-Hans
-      static let repositoryLanguageCellTitle = Rswift.StringResource(key: "Repository.LanguageCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 请检查您的登录名或密码
-      /// 
-      /// Locales: zh-Hans
-      static let loginLoginFailedDescription = Rswift.StringResource(key: "Login.LoginFailed.Description", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 贡献者
-      /// 
-      /// Locales: zh-Hans
-      static let repositoryContributorsCellTitle = Rswift.StringResource(key: "Repository.ContributorsCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 贡献者
-      /// 
-      /// Locales: zh-Hans
-      static let usersContributorsNavigationTitle = Rswift.StringResource(key: "Users.ContributorsNavigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 资料概要
-      /// 
-      /// Locales: zh-Hans
-      static let userProfileSummaryCellTitle = Rswift.StringResource(key: "User.ProfileSummaryCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 跳过
-      /// 
-      /// Locales: zh-Hans
-      static let commonSkip = Rswift.StringResource(key: "Common.Skip", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 返回
-      /// 
-      /// Locales: zh-Hans
-      static let commonBack = Rswift.StringResource(key: "Common.Back", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 还在讨论
-      /// 
-      /// Locales: zh-Hans
-      static let issuesOpenSegmentTitle = Rswift.StringResource(key: "Issues.OpenSegment.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 追随者
-      /// 
-      /// Locales: zh-Hans
-      static let userFollowersButtonTitle = Rswift.StringResource(key: "User.FollowersButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 追随者
-      /// 
-      /// Locales: zh-Hans
-      static let usersFollowersNavigationTitle = Rswift.StringResource(key: "Users.FollowersNavigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 通知
-      /// 
-      /// Locales: zh-Hans
-      static let notificationsNavigationTitle = Rswift.StringResource(key: "Notifications.Navigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 邀请朋友
-      /// 
-      /// Locales: zh-Hans
-      static let contactsNavigationTitle = Rswift.StringResource(key: "Contacts.Navigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 重置
-      /// 
-      /// Locales: zh-Hans
-      static let commonReset = Rswift.StringResource(key: "Common.Reset", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 错误
-      /// 
-      /// Locales: zh-Hans
-      static let commonError = Rswift.StringResource(key: "Common.Error", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 问题
-      /// 
-      /// Locales: zh-Hans
-      static let issuesNavigationTitle = Rswift.StringResource(key: "Issues.Navigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 问题
-      /// 
-      /// Locales: zh-Hans
-      static let repositoryIssuesCellTitle = Rswift.StringResource(key: "Repository.IssuesCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
-      /// zh-Hans translation: 颜色主题
-      /// 
-      /// Locales: zh-Hans
-      static let themeNavigationTitle = Rswift.StringResource(key: "Theme.Navigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// Locales: en, zh-Hans
+      static let loginPasswordTextFieldPlaceholder = Rswift.StringResource(key: "Login.PasswordTextField.Placeholder", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       
       /// en translation: %@ repositories
       /// 
@@ -882,11 +907,53 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Settings.Banner.Title", bundle: R.hostingBundle, comment: "")
       }
       
+      /// en translation: All
+      /// 
+      /// Locales: en, zh-Hans
+      static func languagesAllSectionTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Languages.AllSection.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: All
+      /// 
+      /// Locales: en, zh-Hans
+      static func notificationsAllSegmentTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Notifications.AllSegment.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: All Languages
+      /// 
+      /// Locales: en, zh-Hans
+      static func languagesAllButtonTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Languages.allButton.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: All notifications marked as read
+      /// 
+      /// Locales: en, zh-Hans
+      static func notificationsMarkAsReadSuccess(_: Void = ()) -> String {
+        return NSLocalizedString("Notifications.MarkAsRead.Success", bundle: R.hostingBundle, comment: "")
+      }
+      
       /// en translation: Are you sure want to log out from SwiftHub?
       /// 
       /// Locales: en, zh-Hans
       static func settingsLogoutAlertMessage(_: Void = ()) -> String {
         return NSLocalizedString("Settings.Logout.Alert.Message", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Back
+      /// 
+      /// Locales: en, zh-Hans
+      static func commonBack(_: Void = ()) -> String {
+        return NSLocalizedString("Common.Back", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Basic
+      /// 
+      /// Locales: en, zh-Hans
+      static func loginBasicSegmentTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Login.BasicSegment.Title", bundle: R.hostingBundle, comment: "")
       }
       
       /// en translation: Best match
@@ -903,11 +970,46 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Search.SortUsers.BestMatch.Title", bundle: R.hostingBundle, comment: "")
       }
       
+      /// en translation: Blog
+      /// 
+      /// Locales: en, zh-Hans
+      static func userBlogCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("User.BlogCell.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Branches
+      /// 
+      /// Locales: en, zh-Hans
+      static func repositoryBranchesCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repository.BranchesCell.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
       /// en translation: Cache Successfully Cleared
       /// 
       /// Locales: en, zh-Hans
       static func settingsRemoveCacheAlertSuccessMessage(_: Void = ()) -> String {
         return NSLocalizedString("Settings.RemoveCache.Alert.SuccessMessage", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Cancel
+      /// 
+      /// Locales: en, zh-Hans
+      static func commonCancel(_: Void = ()) -> String {
+        return NSLocalizedString("Common.Cancel", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Close
+      /// 
+      /// Locales: en, zh-Hans
+      static func commonClose(_: Void = ()) -> String {
+        return NSLocalizedString("Common.Close", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Closed
+      /// 
+      /// Locales: en, zh-Hans
+      static func issuesClosedSegmentTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Issues.ClosedSegment.Title", bundle: R.hostingBundle, comment: "")
       }
       
       /// en translation: Color theme
@@ -917,11 +1019,53 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Settings.Theme.Title", bundle: R.hostingBundle, comment: "")
       }
       
+      /// en translation: Color theme
+      /// 
+      /// Locales: en, zh-Hans
+      static func themeNavigationTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Theme.Navigation.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Commits
+      /// 
+      /// Locales: en, zh-Hans
+      static func repositoryCommitsCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repository.CommitsCell.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Company
+      /// 
+      /// Locales: en, zh-Hans
+      static func userCompanyCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("User.CompanyCell.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
       /// en translation: Continue
       /// 
       /// Locales: en, zh-Hans
       static func whatsNewCompletionButtonTitle(_: Void = ()) -> String {
         return NSLocalizedString("WhatsNew.CompletionButton.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Contributors
+      /// 
+      /// Locales: en, zh-Hans
+      static func repositoryContributorsCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repository.ContributorsCell.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Contributors
+      /// 
+      /// Locales: en, zh-Hans
+      static func usersContributorsNavigationTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Users.ContributorsNavigation.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Created
+      /// 
+      /// Locales: en, zh-Hans
+      static func repositoryCreatedCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repository.CreatedCell.Title", bundle: R.hostingBundle, comment: "")
       }
       
       /// en translation: Daily
@@ -931,11 +1075,60 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Search.DailySegment.Title", bundle: R.hostingBundle, comment: "")
       }
       
+      /// en translation: Delete
+      /// 
+      /// Locales: en, zh-Hans
+      static func commonDelete(_: Void = ()) -> String {
+        return NSLocalizedString("Common.Delete", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Done
+      /// 
+      /// Locales: en, zh-Hans
+      static func commonDone(_: Void = ()) -> String {
+        return NSLocalizedString("Common.Done", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Edit
+      /// 
+      /// Locales: en, zh-Hans
+      static func commonEdit(_: Void = ()) -> String {
+        return NSLocalizedString("Common.Edit", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Error
+      /// 
+      /// Locales: en, zh-Hans
+      static func commonError(_: Void = ()) -> String {
+        return NSLocalizedString("Common.Error", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Events
+      /// 
+      /// Locales: en, zh-Hans
+      static func eventsNavigationTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Events.Navigation.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
       /// en translation: Events
       /// 
       /// Locales: en, zh-Hans
       static func homeTabBarEventsTitle(_: Void = ()) -> String {
         return NSLocalizedString("Home.TabBar.Events.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Events
+      /// 
+      /// Locales: en, zh-Hans
+      static func repositoryEventsCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repository.EventsCell.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Events
+      /// 
+      /// Locales: en, zh-Hans
+      static func userEventsCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("User.EventsCell.Title", bundle: R.hostingBundle, comment: "")
       }
       
       /// en translation: Fewest followers
@@ -966,11 +1159,81 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Search.SortRepositories.FewestStars.Title", bundle: R.hostingBundle, comment: "")
       }
       
+      /// en translation: Followers
+      /// 
+      /// Locales: en, zh-Hans
+      static func userFollowersButtonTitle(_: Void = ()) -> String {
+        return NSLocalizedString("User.FollowersButton.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Followers
+      /// 
+      /// Locales: en, zh-Hans
+      static func usersFollowersNavigationTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Users.FollowersNavigation.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Following
+      /// 
+      /// Locales: en, zh-Hans
+      static func userFollowingButtonTitle(_: Void = ()) -> String {
+        return NSLocalizedString("User.FollowingButton.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Following
+      /// 
+      /// Locales: en, zh-Hans
+      static func usersFollowingNavigationTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Users.FollowingNavigation.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: For API requests using Basic Authentication or OAuth, you can make up to 5000 requests per hour.   For unauthenticated requests, the rate limit allows for up to 60 requests per hour.
+      /// 
+      /// Locales: en, zh-Hans
+      static func loginDetailLabelText(_: Void = ()) -> String {
+        return NSLocalizedString("Login.DetailLabel.Text", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Forked from
+      /// 
+      /// Locales: en, zh-Hans
+      static func repositoryParentCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repository.ParentCell.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Forks
+      /// 
+      /// Locales: en, zh-Hans
+      static func repositoriesForksNavigationTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repositories.ForksNavigation.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Forks
+      /// 
+      /// Locales: en, zh-Hans
+      static func repositoryForksButtonTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repository.ForksButton.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
       /// en translation: Global Search
       /// 
       /// Locales: en, zh-Hans
       static func searchSearchBarPlaceholder(_: Void = ()) -> String {
         return NSLocalizedString("Search.SearchBar.Placeholder", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Homepage
+      /// 
+      /// Locales: en, zh-Hans
+      static func repositoryHomepageCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repository.HomepageCell.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Invite friends
+      /// 
+      /// Locales: en, zh-Hans
+      static func contactsNavigationTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Contacts.Navigation.Title", bundle: R.hostingBundle, comment: "")
       }
       
       /// en translation: Invite friends
@@ -980,11 +1243,46 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Settings.Contacts.Title", bundle: R.hostingBundle, comment: "")
       }
       
+      /// en translation: Issues
+      /// 
+      /// Locales: en, zh-Hans
+      static func issuesNavigationTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Issues.Navigation.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Issues
+      /// 
+      /// Locales: en, zh-Hans
+      static func repositoryIssuesCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repository.IssuesCell.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Language
+      /// 
+      /// Locales: en, zh-Hans
+      static func languageNavigationTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Language.Navigation.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Language
+      /// 
+      /// Locales: en, zh-Hans
+      static func repositoryLanguageCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repository.LanguageCell.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
       /// en translation: Language
       /// 
       /// Locales: en, zh-Hans
       static func settingsLanguageTitle(_: Void = ()) -> String {
         return NSLocalizedString("Settings.Language.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Languages
+      /// 
+      /// Locales: en, zh-Hans
+      static func languagesNavigationTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Languages.Navigation.Title", bundle: R.hostingBundle, comment: "")
       }
       
       /// en translation: Last recently updated
@@ -1013,6 +1311,13 @@ struct R: Rswift.Validatable {
       /// Locales: en, zh-Hans
       static func homeTabBarLoginTitle(_: Void = ()) -> String {
         return NSLocalizedString("Home.TabBar.Login.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Login
+      /// 
+      /// Locales: en, zh-Hans
+      static func loginBasicLoginButtonTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Login.BasicLoginButton.Title", bundle: R.hostingBundle, comment: "")
       }
       
       /// en translation: Logout
@@ -1064,11 +1369,25 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Search.SortRepositories.MostStars.Title", bundle: R.hostingBundle, comment: "")
       }
       
+      /// en translation: My Notifications
+      /// 
+      /// Locales: en, zh-Hans
+      static func repositoryNotificationsCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repository.NotificationsCell.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
       /// en translation: My Projects
       /// 
       /// Locales: en, zh-Hans
       static func settingsProjectsSectionTitle(_: Void = ()) -> String {
         return NSLocalizedString("Settings.ProjectsSection.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Next
+      /// 
+      /// Locales: en, zh-Hans
+      static func commonNext(_: Void = ()) -> String {
+        return NSLocalizedString("Common.Next", bundle: R.hostingBundle, comment: "")
       }
       
       /// en translation: Night mode
@@ -1078,11 +1397,95 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Settings.NightMode.Title", bundle: R.hostingBundle, comment: "")
       }
       
+      /// en translation: No
+      /// 
+      /// Locales: en, zh-Hans
+      static func commonNo(_: Void = ()) -> String {
+        return NSLocalizedString("Common.No", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: No Results
+      /// 
+      /// Locales: en, zh-Hans
+      static func commonNoResults(_: Void = ()) -> String {
+        return NSLocalizedString("Common.NoResults", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Notifications
+      /// 
+      /// Locales: en, zh-Hans
+      static func notificationsNavigationTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Notifications.Navigation.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: OAuth
+      /// 
+      /// Locales: en, zh-Hans
+      static func loginOAuthSegmentTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Login.OAuthSegment.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: OK
+      /// 
+      /// Locales: en, zh-Hans
+      static func commonOK(_: Void = ()) -> String {
+        return NSLocalizedString("Common.OK", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Open
+      /// 
+      /// Locales: en, zh-Hans
+      static func issuesOpenSegmentTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Issues.OpenSegment.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
       /// en translation: Open Source
       /// 
       /// Locales: en, zh-Hans
       static func whatsNewItem3Title(_: Void = ()) -> String {
         return NSLocalizedString("WhatsNew.Item3.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Organizations
+      /// 
+      /// Locales: en, zh-Hans
+      static func userOrganizationsSectionTitle(_: Void = ()) -> String {
+        return NSLocalizedString("User.OrganizationsSection.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Participating
+      /// 
+      /// Locales: en, zh-Hans
+      static func notificationsParticipatingSegmentTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Notifications.ParticipatingSegment.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Performed
+      /// 
+      /// Locales: en, zh-Hans
+      static func eventsPerformedSegmentTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Events.PerformedSegment.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Pinned
+      /// 
+      /// Locales: en, zh-Hans
+      static func userPinnedSectionTitle(_: Void = ()) -> String {
+        return NSLocalizedString("User.PinnedSection.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Please check your login or password
+      /// 
+      /// Locales: en, zh-Hans
+      static func loginLoginFailedDescription(_: Void = ()) -> String {
+        return NSLocalizedString("Login.LoginFailed.Description", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Popular
+      /// 
+      /// Locales: en, zh-Hans
+      static func languagesPopularSectionTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Languages.PopularSection.Title", bundle: R.hostingBundle, comment: "")
       }
       
       /// en translation: Preferences
@@ -1099,11 +1502,46 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Home.TabBar.Profile.Title", bundle: R.hostingBundle, comment: "")
       }
       
+      /// en translation: Profile Summary
+      /// 
+      /// Locales: en, zh-Hans
+      static func userProfileSummaryCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("User.ProfileSummaryCell.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Pull Requests
+      /// 
+      /// Locales: en, zh-Hans
+      static func repositoryPullRequestsCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repository.PullRequestsCell.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Readme
+      /// 
+      /// Locales: en, zh-Hans
+      static func repositoryReadmeCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repository.ReadmeCell.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Received
+      /// 
+      /// Locales: en, zh-Hans
+      static func eventsReceivedSegmentTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Events.ReceivedSegment.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
       /// en translation: Recently updated
       /// 
       /// Locales: en, zh-Hans
       static func searchSortRepositoriesRecentlyUpdatedTitle(_: Void = ()) -> String {
         return NSLocalizedString("Search.SortRepositories.RecentlyUpdated.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Releases
+      /// 
+      /// Locales: en, zh-Hans
+      static func repositoryReleasesCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repository.ReleasesCell.Title", bundle: R.hostingBundle, comment: "")
       }
       
       /// en translation: Remove cache
@@ -1116,8 +1554,43 @@ struct R: Rswift.Validatable {
       /// en translation: Repositories
       /// 
       /// Locales: en, zh-Hans
+      static func repositoriesRepositoriesNavigationTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repositories.RepositoriesNavigation.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Repositories
+      /// 
+      /// Locales: en, zh-Hans
       static func searchRepositoriesSegmentTitle(_: Void = ()) -> String {
         return NSLocalizedString("Search.RepositoriesSegment.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Repositories
+      /// 
+      /// Locales: en, zh-Hans
+      static func userRepositoriesButtonTitle(_: Void = ()) -> String {
+        return NSLocalizedString("User.RepositoriesButton.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Reset
+      /// 
+      /// Locales: en, zh-Hans
+      static func commonReset(_: Void = ()) -> String {
+        return NSLocalizedString("Common.Reset", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Save
+      /// 
+      /// Locales: en, zh-Hans
+      static func commonSave(_: Void = ()) -> String {
+        return NSLocalizedString("Common.Save", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Search
+      /// 
+      /// Locales: en, zh-Hans
+      static func commonSearch(_: Void = ()) -> String {
+        return NSLocalizedString("Common.Search", bundle: R.hostingBundle, comment: "")
       }
       
       /// en translation: Search
@@ -1158,6 +1631,13 @@ struct R: Rswift.Validatable {
       /// en translation: Settings
       /// 
       /// Locales: en, zh-Hans
+      static func contactsPermissionDeniedButton(_: Void = ()) -> String {
+        return NSLocalizedString("Contacts.PermissionDenied.Button", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Settings
+      /// 
+      /// Locales: en, zh-Hans
       static func homeTabBarSettingsTitle(_: Void = ()) -> String {
         return NSLocalizedString("Home.TabBar.Settings.Title", bundle: R.hostingBundle, comment: "")
       }
@@ -1167,6 +1647,76 @@ struct R: Rswift.Validatable {
       /// Locales: en, zh-Hans
       static func settingsNavigationTitle(_: Void = ()) -> String {
         return NSLocalizedString("Settings.Navigation.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Sign in with Github
+      /// 
+      /// Locales: en, zh-Hans
+      static func loginOAuthloginButtonTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Login.OAuthloginButton.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Size
+      /// 
+      /// Locales: en, zh-Hans
+      static func repositorySizeCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repository.SizeCell.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Skip
+      /// 
+      /// Locales: en, zh-Hans
+      static func commonSkip(_: Void = ()) -> String {
+        return NSLocalizedString("Common.Skip", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Source Code
+      /// 
+      /// Locales: en, zh-Hans
+      static func repositorySourceCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repository.SourceCell.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Stargazers
+      /// 
+      /// Locales: en, zh-Hans
+      static func usersStargazersNavigationTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Users.StargazersNavigation.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Starred
+      /// 
+      /// Locales: en, zh-Hans
+      static func repositoriesStarredNavigationTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repositories.StarredNavigation.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Stars
+      /// 
+      /// Locales: en, zh-Hans
+      static func repositoryStarsButtonTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repository.StarsButton.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Stars
+      /// 
+      /// Locales: en, zh-Hans
+      static func userStarsCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("User.StarsCell.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Stars History
+      /// 
+      /// Locales: en, zh-Hans
+      static func repositoryStarsHistoryCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repository.StarsHistoryCell.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Success
+      /// 
+      /// Locales: en, zh-Hans
+      static func commonSuccess(_: Void = ()) -> String {
+        return NSLocalizedString("Common.Success", bundle: R.hostingBundle, comment: "")
       }
       
       /// en translation: Support
@@ -1218,6 +1768,20 @@ struct R: Rswift.Validatable {
         return String(format: NSLocalizedString("Search.TrendingSectionWithLanguage.Title", bundle: R.hostingBundle, comment: ""), locale: R.applicationLocale, value1)
       }
       
+      /// en translation: Unread
+      /// 
+      /// Locales: en, zh-Hans
+      static func notificationsUnreadSegmentTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Notifications.UnreadSegment.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Updated
+      /// 
+      /// Locales: en, zh-Hans
+      static func repositoryUpdatedCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repository.UpdatedCell.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
       /// en translation: Users
       /// 
       /// Locales: en, zh-Hans
@@ -1232,11 +1796,60 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("WhatsNew.DetailButton.Title", bundle: R.hostingBundle, comment: "")
       }
       
+      /// en translation: Watchers
+      /// 
+      /// Locales: en, zh-Hans
+      static func repositoryWatchersButtonTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Repository.WatchersButton.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Watchers
+      /// 
+      /// Locales: en, zh-Hans
+      static func usersWatchersNavigationTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Users.WatchersNavigation.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Watching
+      /// 
+      /// Locales: en, zh-Hans
+      static func userWatchingCellTitle(_: Void = ()) -> String {
+        return NSLocalizedString("User.WatchingCell.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: We can't continue without your  permission to access your contacts.  Try Again?
+      /// 
+      /// Locales: en, zh-Hans
+      static func contactsPermissionDeniedDescription(_: Void = ()) -> String {
+        return NSLocalizedString("Contacts.PermissionDenied.Description", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: We need your permission!
+      /// 
+      /// Locales: en, zh-Hans
+      static func contactsPermissionDeniedTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Contacts.PermissionDenied.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
       /// en translation: Weekly
       /// 
       /// Locales: en, zh-Hans
       static func searchWeeklySegmentTitle(_: Void = ()) -> String {
         return NSLocalizedString("Search.WeeklySegment.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Welcome to SwiftHub
+      /// 
+      /// Locales: en, zh-Hans
+      static func loginTitleLabelText(_: Void = ()) -> String {
+        return NSLocalizedString("Login.TitleLabel.Text", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Welcome to SwiftHub!
+      /// 
+      /// Locales: en, zh-Hans
+      static func initialNoResults(_: Void = ()) -> String {
+        return NSLocalizedString("Initial.NoResults", bundle: R.hostingBundle, comment: "")
       }
       
       /// en translation: Whats New
@@ -1267,6 +1880,13 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("WhatsNew.Item1.Subtitle", bundle: R.hostingBundle, comment: "")
       }
       
+      /// en translation: Yes
+      /// 
+      /// Locales: en, zh-Hans
+      static func commonYes(_: Void = ()) -> String {
+        return NSLocalizedString("Common.Yes", bundle: R.hostingBundle, comment: "")
+      }
+      
       /// en translation: You can apply different themes with Light and Dark modes
       /// 
       /// Locales: en, zh-Hans
@@ -1274,613 +1894,18 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("WhatsNew.Item2.Subtitle", bundle: R.hostingBundle, comment: "")
       }
       
-      /// zh-Hans translation: OAuth认证
+      /// en translation: login
       /// 
-      /// Locales: zh-Hans
-      static func loginOAuthSegmentTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Login.OAuthSegment.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 下一步
-      /// 
-      /// Locales: zh-Hans
-      static func commonNext(_: Void = ()) -> String {
-        return NSLocalizedString("Common.Next", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 主页
-      /// 
-      /// Locales: zh-Hans
-      static func repositoryHomepageCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repository.HomepageCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 事件
-      /// 
-      /// Locales: zh-Hans
-      static func repositoryEventsCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repository.EventsCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 事件
-      /// 
-      /// Locales: zh-Hans
-      static func userEventsCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("User.EventsCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 仓库
-      /// 
-      /// Locales: zh-Hans
-      static func repositoriesRepositoriesNavigationTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repositories.RepositoriesNavigation.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 使用 Github 登录
-      /// 
-      /// Locales: zh-Hans
-      static func loginOAuthloginButtonTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Login.OAuthloginButton.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 保存
-      /// 
-      /// Locales: zh-Hans
-      static func commonSave(_: Void = ()) -> String {
-        return NSLocalizedString("Common.Save", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 全部
-      /// 
-      /// Locales: zh-Hans
-      static func languagesAllSectionTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Languages.AllSection.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 全部
-      /// 
-      /// Locales: zh-Hans
-      static func notificationsAllSegmentTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Notifications.AllSegment.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 公司
-      /// 
-      /// Locales: zh-Hans
-      static func userCompanyCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("User.CompanyCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 关注
-      /// 
-      /// Locales: zh-Hans
-      static func userFollowingButtonTitle(_: Void = ()) -> String {
-        return NSLocalizedString("User.FollowingButton.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 关注
-      /// 
-      /// Locales: zh-Hans
-      static func usersFollowingNavigationTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Users.FollowingNavigation.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 关闭
-      /// 
-      /// Locales: zh-Hans
-      static func commonClose(_: Void = ()) -> String {
-        return NSLocalizedString("Common.Close", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 创建的内容
-      /// 
-      /// Locales: zh-Hans
-      static func repositoryCreatedCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repository.CreatedCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 删除
-      /// 
-      /// Locales: zh-Hans
-      static func commonDelete(_: Void = ()) -> String {
-        return NSLocalizedString("Common.Delete", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 博客
-      /// 
-      /// Locales: zh-Hans
-      static func userBlogCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("User.BlogCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 参与
-      /// 
-      /// Locales: zh-Hans
-      static func notificationsParticipatingSegmentTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Notifications.ParticipatingSegment.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 取消
-      /// 
-      /// Locales: zh-Hans
-      static func commonCancel(_: Void = ()) -> String {
-        return NSLocalizedString("Common.Cancel", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 否
-      /// 
-      /// Locales: zh-Hans
-      static func commonNo(_: Void = ()) -> String {
-        return NSLocalizedString("Common.No", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 基本认证
-      /// 
-      /// Locales: zh-Hans
-      static func loginBasicSegmentTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Login.BasicSegment.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 复制仓库
-      /// 
-      /// Locales: zh-Hans
-      static func repositoriesForksNavigationTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repositories.ForksNavigation.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 复制仓库
-      /// 
-      /// Locales: zh-Hans
-      static func repositoryForksButtonTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repository.ForksButton.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 复制仓库的来源
-      /// 
-      /// Locales: zh-Hans
-      static func repositoryParentCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repository.ParentCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 大小
-      /// 
-      /// Locales: zh-Hans
-      static func repositorySizeCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repository.SizeCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 好的
-      /// 
-      /// Locales: zh-Hans
-      static func commonOK(_: Void = ()) -> String {
-        return NSLocalizedString("Common.OK", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 存储库
-      /// 
-      /// Locales: zh-Hans
-      static func userRepositoriesButtonTitle(_: Void = ()) -> String {
-        return NSLocalizedString("User.RepositoriesButton.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 完成
-      /// 
-      /// Locales: zh-Hans
-      static func commonDone(_: Void = ()) -> String {
-        return NSLocalizedString("Common.Done", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 密码
-      /// 
-      /// Locales: zh-Hans
-      static func loginPasswordTextFieldPlaceholder(_: Void = ()) -> String {
-        return NSLocalizedString("Login.PasswordTextField.Placeholder", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 对于使用基本身份验证或 OAuth 的API请求，您每小时最多可以发出5000次请求。   对于未认证的请求,它限制您每小时请求最多60次请求。
-      /// 
-      /// Locales: zh-Hans
-      static func loginDetailLabelText(_: Void = ()) -> String {
-        return NSLocalizedString("Login.DetailLabel.Text", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 已关闭
-      /// 
-      /// Locales: zh-Hans
-      static func issuesClosedSegmentTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Issues.ClosedSegment.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 已发布
-      /// 
-      /// Locales: zh-Hans
-      static func repositoryReleasesCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repository.ReleasesCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 成功
-      /// 
-      /// Locales: zh-Hans
-      static func commonSuccess(_: Void = ()) -> String {
-        return NSLocalizedString("Common.Success", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 我们需要你的许可！
-      /// 
-      /// Locales: zh-Hans
-      static func contactsPermissionDeniedTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Contacts.PermissionDenied.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 我的通知
-      /// 
-      /// Locales: zh-Hans
-      static func repositoryNotificationsCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repository.NotificationsCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 所有分支
-      /// 
-      /// Locales: zh-Hans
-      static func repositoryBranchesCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repository.BranchesCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 所有语言
-      /// 
-      /// Locales: zh-Hans
-      static func languagesAllButtonTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Languages.allButton.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 所有通知都标记为已读
-      /// 
-      /// Locales: zh-Hans
-      static func notificationsMarkAsReadSuccess(_: Void = ()) -> String {
-        return NSLocalizedString("Notifications.MarkAsRead.Success", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 打星
-      /// 
-      /// Locales: zh-Hans
-      static func repositoriesStarredNavigationTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repositories.StarredNavigation.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 打星历史
-      /// 
-      /// Locales: zh-Hans
-      static func repositoryStarsHistoryCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repository.StarsHistoryCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 执行
-      /// 
-      /// Locales: zh-Hans
-      static func eventsPerformedSegmentTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Events.PerformedSegment.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 拉取请求
-      /// 
-      /// Locales: zh-Hans
-      static func repositoryPullRequestsCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repository.PullRequestsCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 提交
-      /// 
-      /// Locales: zh-Hans
-      static func repositoryCommitsCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repository.CommitsCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 搜索
-      /// 
-      /// Locales: zh-Hans
-      static func commonSearch(_: Void = ()) -> String {
-        return NSLocalizedString("Common.Search", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 收到
-      /// 
-      /// Locales: zh-Hans
-      static func eventsReceivedSegmentTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Events.ReceivedSegment.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 星星
-      /// 
-      /// Locales: zh-Hans
-      static func repositoryStarsButtonTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repository.StarsButton.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 星星
-      /// 
-      /// Locales: zh-Hans
-      static func userStarsCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("User.StarsCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 是
-      /// 
-      /// Locales: zh-Hans
-      static func commonYes(_: Void = ()) -> String {
-        return NSLocalizedString("Common.Yes", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 更新的内容
-      /// 
-      /// Locales: zh-Hans
-      static func repositoryUpdatedCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repository.UpdatedCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 未经您的许可， 我们无法继续访问您的联系人。  再试一次？
-      /// 
-      /// Locales: zh-Hans
-      static func contactsPermissionDeniedDescription(_: Void = ()) -> String {
-        return NSLocalizedString("Contacts.PermissionDenied.Description", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 未读
-      /// 
-      /// Locales: zh-Hans
-      static func notificationsUnreadSegmentTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Notifications.UnreadSegment.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 欢迎来到 SwiftHub 
-      /// 
-      /// Locales: zh-Hans
-      static func loginTitleLabelText(_: Void = ()) -> String {
-        return NSLocalizedString("Login.TitleLabel.Text", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 欢迎来到 SwiftHub ！
-      /// 
-      /// Locales: zh-Hans
-      static func initialNoResults(_: Void = ()) -> String {
-        return NSLocalizedString("Initial.NoResults", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 正在看
-      /// 
-      /// Locales: zh-Hans
-      static func userWatchingCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("User.WatchingCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 没有结果
-      /// 
-      /// Locales: zh-Hans
-      static func commonNoResults(_: Void = ()) -> String {
-        return NSLocalizedString("Common.NoResults", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 活动
-      /// 
-      /// Locales: zh-Hans
-      static func eventsNavigationTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Events.Navigation.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 源代码
-      /// 
-      /// Locales: zh-Hans
-      static func repositorySourceCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repository.SourceCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 热门
-      /// 
-      /// Locales: zh-Hans
-      static func languagesPopularSectionTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Languages.PopularSection.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 登录
-      /// 
-      /// Locales: zh-Hans
-      static func loginBasicLoginButtonTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Login.BasicLoginButton.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 登录
-      /// 
-      /// Locales: zh-Hans
+      /// Locales: en, zh-Hans
       static func loginLoginTextFieldPlaceholder(_: Void = ()) -> String {
         return NSLocalizedString("Login.LoginTextField.Placeholder", bundle: R.hostingBundle, comment: "")
       }
       
-      /// zh-Hans translation: 看守
+      /// en translation: password
       /// 
-      /// Locales: zh-Hans
-      static func usersWatchersNavigationTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Users.WatchersNavigation.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 组织
-      /// 
-      /// Locales: zh-Hans
-      static func userOrganizationsSectionTitle(_: Void = ()) -> String {
-        return NSLocalizedString("User.OrganizationsSection.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 编辑
-      /// 
-      /// Locales: zh-Hans
-      static func commonEdit(_: Void = ()) -> String {
-        return NSLocalizedString("Common.Edit", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 置顶
-      /// 
-      /// Locales: zh-Hans
-      static func userPinnedSectionTitle(_: Void = ()) -> String {
-        return NSLocalizedString("User.PinnedSection.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 自述
-      /// 
-      /// Locales: zh-Hans
-      static func repositoryReadmeCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repository.ReadmeCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 观察员
-      /// 
-      /// Locales: zh-Hans
-      static func repositoryWatchersButtonTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repository.WatchersButton.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 观星者
-      /// 
-      /// Locales: zh-Hans
-      static func usersStargazersNavigationTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Users.StargazersNavigation.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 设置
-      /// 
-      /// Locales: zh-Hans
-      static func contactsPermissionDeniedButton(_: Void = ()) -> String {
-        return NSLocalizedString("Contacts.PermissionDenied.Button", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 语言
-      /// 
-      /// Locales: zh-Hans
-      static func languageNavigationTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Language.Navigation.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 语言
-      /// 
-      /// Locales: zh-Hans
-      static func languagesNavigationTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Languages.Navigation.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 语言
-      /// 
-      /// Locales: zh-Hans
-      static func repositoryLanguageCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repository.LanguageCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 请检查您的登录名或密码
-      /// 
-      /// Locales: zh-Hans
-      static func loginLoginFailedDescription(_: Void = ()) -> String {
-        return NSLocalizedString("Login.LoginFailed.Description", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 贡献者
-      /// 
-      /// Locales: zh-Hans
-      static func repositoryContributorsCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repository.ContributorsCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 贡献者
-      /// 
-      /// Locales: zh-Hans
-      static func usersContributorsNavigationTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Users.ContributorsNavigation.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 资料概要
-      /// 
-      /// Locales: zh-Hans
-      static func userProfileSummaryCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("User.ProfileSummaryCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 跳过
-      /// 
-      /// Locales: zh-Hans
-      static func commonSkip(_: Void = ()) -> String {
-        return NSLocalizedString("Common.Skip", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 返回
-      /// 
-      /// Locales: zh-Hans
-      static func commonBack(_: Void = ()) -> String {
-        return NSLocalizedString("Common.Back", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 还在讨论
-      /// 
-      /// Locales: zh-Hans
-      static func issuesOpenSegmentTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Issues.OpenSegment.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 追随者
-      /// 
-      /// Locales: zh-Hans
-      static func userFollowersButtonTitle(_: Void = ()) -> String {
-        return NSLocalizedString("User.FollowersButton.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 追随者
-      /// 
-      /// Locales: zh-Hans
-      static func usersFollowersNavigationTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Users.FollowersNavigation.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 通知
-      /// 
-      /// Locales: zh-Hans
-      static func notificationsNavigationTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Notifications.Navigation.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 邀请朋友
-      /// 
-      /// Locales: zh-Hans
-      static func contactsNavigationTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Contacts.Navigation.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 重置
-      /// 
-      /// Locales: zh-Hans
-      static func commonReset(_: Void = ()) -> String {
-        return NSLocalizedString("Common.Reset", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 错误
-      /// 
-      /// Locales: zh-Hans
-      static func commonError(_: Void = ()) -> String {
-        return NSLocalizedString("Common.Error", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 问题
-      /// 
-      /// Locales: zh-Hans
-      static func issuesNavigationTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Issues.Navigation.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 问题
-      /// 
-      /// Locales: zh-Hans
-      static func repositoryIssuesCellTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Repository.IssuesCell.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// zh-Hans translation: 颜色主题
-      /// 
-      /// Locales: zh-Hans
-      static func themeNavigationTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Theme.Navigation.Title", bundle: R.hostingBundle, comment: "")
+      /// Locales: en, zh-Hans
+      static func loginPasswordTextFieldPlaceholder(_: Void = ()) -> String {
+        return NSLocalizedString("Login.PasswordTextField.Placeholder", bundle: R.hostingBundle, comment: "")
       }
       
       fileprivate init() {}
@@ -1916,6 +1941,20 @@ struct _R: Rswift.Validatable {
   
   #if os(iOS) || os(tvOS)
   struct nib {
+    struct _LanguageCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = LanguageCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "languageCell"
+      let name = "LanguageCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> LanguageCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? LanguageCell
+      }
+      
+      fileprivate init() {}
+    }
+    
     struct _SettingCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
       typealias ReusableType = SettingCell
       

@@ -38,13 +38,14 @@ class SettingsViewController: TableViewController {
         let output = viewModel.transform(input: input)
         let dataSource = RxTableViewSectionedReloadDataSource<SettingsSection>(configureCell: { dataSource, tableView, indexPath, item in
             switch item {
-            case .themeItem(let viewModel):
-                let cell = (tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? SettingCell)!
-                cell.bind(to:viewModel)
-                return cell
             case .nightModeItem(let viewModel):
                 let cell = (tableView.dequeueReusableCell(withIdentifier: switchReuseIdentifier, for: indexPath) as? SettingSwitchCell)!
                 cell.bind(to: viewModel)
+                return cell
+            case .themeItem(let viewModel),
+                 .languageItem(let viewModel):
+                let cell = (tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? SettingCell)!
+                cell.bind(to:viewModel)
                 return cell
             }
         },titleForHeaderInSection: { dataSource,index in
@@ -57,6 +58,10 @@ class SettingsViewController: TableViewController {
             case .themeItem:
                 if let viewModel = viewModel.viewModel(for: item) as? ThemeViewModel {
                    self?.navigator?.show(segue: .theme(viewModel: viewModel), sender: self, transition: .detail)
+                }
+            case .languageItem:
+                if let viewModel = viewModel.viewModel(for: item) as? LanguageViewModel {
+                    self?.navigator.show(segue: .language(viewModel: viewModel), sender: self, transition: .detail)
                 }
             case .nightModeItem:break
                 

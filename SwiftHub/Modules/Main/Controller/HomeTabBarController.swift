@@ -94,6 +94,14 @@ class HomeTabBarController: UITabBarController, Navigatable {
             .bind({ $0.secondary }, to: tabBar.rx.tintColor)
             .bind({ $0.primaryDark }, to: tabBar.rx.barTintColor)
             .disposed(by: rx.disposeBag)
+        
+        NotificationCenter.default
+            .rx.notification(NSNotification.Name(LCLLanguageChangeNotification))
+            .subscribe { [weak self] (event) in
+                self?.tabBar.items?.forEach({ (item) in
+                    item.title = HomeTabBarItem(rawValue: item.tag)?.title
+                })
+            }.disposed(by: rx.disposeBag)
     }
     
     func bindViewModel() {
