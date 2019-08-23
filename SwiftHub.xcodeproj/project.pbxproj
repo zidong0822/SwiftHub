@@ -69,6 +69,7 @@
 		58D91BD3230E707300ABA1CE /* LanguageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BD2230E707300ABA1CE /* LanguageCellViewModel.swift */; };
 		58D91BD5230E70BA00ABA1CE /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BD4230E70BA00ABA1CE /* Language.swift */; };
 		58D91BD7230E79EF00ABA1CE /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BD6230E79EF00ABA1CE /* SearchBar.swift */; };
+		58D91BE3230FBF1500ABA1CE /* Foundation+SwiftHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D91BE2230FBF1500ABA1CE /* Foundation+SwiftHub.swift */; };
 		AFA78AC4B2FBC9F48B092392 /* Pods_SwiftHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D71B9383927E6DEA0D8D3F9B /* Pods_SwiftHub.framework */; };
 		BD6106BCF9A01E9813EAD9AA /* Pods_SwiftHubTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9D3C6AAF9EF234DFA9E7B5 /* Pods_SwiftHubTests.framework */; };
 /* End PBXBuildFile section */
@@ -164,6 +165,7 @@
 		58D91BD2230E707300ABA1CE /* LanguageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageCellViewModel.swift; sourceTree = "<group>"; };
 		58D91BD4230E70BA00ABA1CE /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		58D91BD6230E79EF00ABA1CE /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		58D91BE2230FBF1500ABA1CE /* Foundation+SwiftHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+SwiftHub.swift"; sourceTree = "<group>"; };
 		70EB0089029B3268848D8EF2 /* Pods-SwiftHubTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHubTests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftHubTests/Pods-SwiftHubTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A4CD9F4B500E842A34328676 /* Pods-SwiftHubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHubTests.release.xcconfig"; path = "Target Support Files/Pods-SwiftHubTests/Pods-SwiftHubTests.release.xcconfig"; sourceTree = "<group>"; };
 		A5A7C160B8E810AA18DF1685 /* Pods-SwiftHubUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHubUITests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftHubUITests/Pods-SwiftHubUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 				585E0564230565C300204AD2 /* Observable+Operators.swift */,
 				585E057E230685A800204AD2 /* UIColor+SwiftHub.swift */,
 				58D91B9A230A97A300ABA1CE /* Kingfisher+Rx.swift */,
+				58D91BE2230FBF1500ABA1CE /* Foundation+SwiftHub.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -925,6 +928,7 @@
 				585E056A2306520800204AD2 /* ThemeManager.swift in Sources */,
 				58D91BB3230D30A300ABA1CE /* ThemeViewModel.swift in Sources */,
 				585E057F230685A800204AD2 /* UIColor+SwiftHub.swift in Sources */,
+				58D91BE3230FBF1500ABA1CE /* Foundation+SwiftHub.swift in Sources */,
 				585E05842306874500204AD2 /* SettingCell.swift in Sources */,
 				585E0565230565C300204AD2 /* Observable+Operators.swift in Sources */,
 				585E056823064AE100204AD2 /* SearchViewModel.swift in Sources */,

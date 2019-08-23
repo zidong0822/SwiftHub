@@ -24,4 +24,12 @@ class ThemeCell: DefaultTableViewCell {
         guard let viewModel = viewModel as? ThemeCellViewModel else { return }
         viewModel.imageColor.asDriver().drive(leftImageView.rx.backgroundColor).disposed(by: rx.disposeBag)
     }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+        rightImageView.image = selected ? R.image.icon_cell_check()?.template : nil
+    }
+    
 }

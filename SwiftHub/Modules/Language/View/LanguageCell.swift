@@ -15,10 +15,12 @@ class LanguageCell: DefaultTableViewCell {
         leftImageView.isHidden = true
     }
     
+    
+    
     override func bind(to viewModel: DefaultTableViewCellViewModel) {
         super.bind(to: viewModel)
-//        guard let viewModel = viewModel as? ThemeCellViewModel else { return }
-//        viewModel.imageColor.asDriver().drive(leftImageView.rx.backgroundColor).disposed(by: rx.disposeBag)
+        guard let viewModel = viewModel as? LanguageCellViewModel else { return }
+        rightImageView.image = viewModel.language == viewModel.currentLanguage ?  R.image.icon_cell_check()?.template : nil
     }
     
 }

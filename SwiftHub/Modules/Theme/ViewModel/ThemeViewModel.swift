@@ -22,6 +22,9 @@ class ThemeViewModel: ViewModel, ViewModelType {
         let items: Driver<[ThemeCellViewModel]>
         let selected: Driver<ThemeCellViewModel>
     }
+    override init(provider: SwiftHubAPI) {
+        super.init(provider: provider)
+    }
 
     func transform(input: Input) -> Output {
         let elements = input.refresh

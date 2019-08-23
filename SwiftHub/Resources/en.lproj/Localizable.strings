@@ -173,7 +173,7 @@
 "WhatsNew.DetailButton.Title" = "View on GitHub";
 "WhatsNew.CompletionButton.Title" = "Continue";
 /* Languages */
-"Languages.Navigation.Title" = "Languages";
+"Languages.Navigation.Title" = "Language";
 "Languages.allButton.Title" = "All Languages";
 "Languages.PopularSection.Title" = "Popular";
 "Languages.AllSection.Title" = "All";

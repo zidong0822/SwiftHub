@@ -42,14 +42,18 @@ struct R: Rswift.Validatable {
   }
   #endif
   
-  /// This `R.image` struct is generated, and contains static references to 15 images.
+  /// This `R.image` struct is generated, and contains static references to 17 images.
   struct image {
+    /// Image `icon_cell_check`.
+    static let icon_cell_check = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_check")
     /// Image `icon_cell_disclosure`.
     static let icon_cell_disclosure = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_disclosure")
     /// Image `icon_cell_language`.
     static let icon_cell_language = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_language")
     /// Image `icon_cell_night_mode`.
     static let icon_cell_night_mode = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_night_mode")
+    /// Image `icon_cell_remove`.
+    static let icon_cell_remove = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_remove")
     /// Image `icon_cell_theme`.
     static let icon_cell_theme = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_theme")
     /// Image `icon_navigation_close`.
@@ -76,6 +80,13 @@ struct R: Rswift.Validatable {
     static let icon_whatsnew_whats_new = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_whatsnew_whats_new")
     
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "icon_cell_check", bundle: ..., traitCollection: ...)`
+    static func icon_cell_check(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_cell_check, compatibleWith: traitCollection)
+    }
+    #endif
+    
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "icon_cell_disclosure", bundle: ..., traitCollection: ...)`
     static func icon_cell_disclosure(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_cell_disclosure, compatibleWith: traitCollection)
@@ -93,6 +104,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "icon_cell_night_mode", bundle: ..., traitCollection: ...)`
     static func icon_cell_night_mode(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_cell_night_mode, compatibleWith: traitCollection)
+    }
+    #endif
+    
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "icon_cell_remove", bundle: ..., traitCollection: ...)`
+    static func icon_cell_remove(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_cell_remove, compatibleWith: traitCollection)
     }
     #endif
     
@@ -499,15 +517,15 @@ struct R: Rswift.Validatable {
       /// en translation: Language
       /// 
       /// Locales: en, zh-Hans
+      static let languagesNavigationTitle = Rswift.StringResource(key: "Languages.Navigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
+      /// en translation: Language
+      /// 
+      /// Locales: en, zh-Hans
       static let repositoryLanguageCellTitle = Rswift.StringResource(key: "Repository.LanguageCell.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Language
       /// 
       /// Locales: en, zh-Hans
       static let settingsLanguageTitle = Rswift.StringResource(key: "Settings.Language.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
-      /// en translation: Languages
-      /// 
-      /// Locales: en, zh-Hans
-      static let languagesNavigationTitle = Rswift.StringResource(key: "Languages.Navigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "zh-Hans"], comment: nil)
       /// en translation: Last recently updated
       /// 
       /// Locales: en, zh-Hans
@@ -1267,6 +1285,13 @@ struct R: Rswift.Validatable {
       /// en translation: Language
       /// 
       /// Locales: en, zh-Hans
+      static func languagesNavigationTitle(_: Void = ()) -> String {
+        return NSLocalizedString("Languages.Navigation.Title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Language
+      /// 
+      /// Locales: en, zh-Hans
       static func repositoryLanguageCellTitle(_: Void = ()) -> String {
         return NSLocalizedString("Repository.LanguageCell.Title", bundle: R.hostingBundle, comment: "")
       }
@@ -1276,13 +1301,6 @@ struct R: Rswift.Validatable {
       /// Locales: en, zh-Hans
       static func settingsLanguageTitle(_: Void = ()) -> String {
         return NSLocalizedString("Settings.Language.Title", bundle: R.hostingBundle, comment: "")
-      }
-      
-      /// en translation: Languages
-      /// 
-      /// Locales: en, zh-Hans
-      static func languagesNavigationTitle(_: Void = ()) -> String {
-        return NSLocalizedString("Languages.Navigation.Title", bundle: R.hostingBundle, comment: "")
       }
       
       /// en translation: Last recently updated

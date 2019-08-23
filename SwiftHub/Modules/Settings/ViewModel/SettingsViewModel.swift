@@ -56,15 +56,20 @@ class SettingsViewModel: ViewModel, ViewModelType {
             nightModeCellViewModel.switchChanged.skip(1).bind(to: self.nightModeEnabled).disposed(by: self.cellDisposeBag)
             
             let themeCellViewModel = SettingCellViewModel(with: R.string.localizable.settingsThemeTitle.key.localized(), detail: nil,
-                                                          image: R.image.icon_cell_theme()?.template, hidesDisclosure: false)
+                                                          image: R.image.icon_cell_language()?.template, hidesDisclosure: false)
             
             let languageCellViewModel = SettingCellViewModel(with: R.string.localizable.settingsLanguageTitle.key.localized(), detail: nil,
                                                              image: R.image.icon_cell_language()?.template, hidesDisclosure: false)
             
+            let removeCacheCellViewModel = SettingCellViewModel(with: R.string.localizable.settingsRemoveCacheTitle.key.localized(), detail: size.sizeFromByte(),
+                                                                image: R.image.icon_cell_remove()?.template, hidesDisclosure: true)
+            
             items += [SettingsSection.setting(title:R.string.localizable.settingsPreferencesSectionTitle.key.localized(),
                                               items:[SettingsSectionItem.nightModeItem(viewModel: nightModeCellViewModel),
                                                      SettingsSectionItem.themeItem(viewModel: themeCellViewModel),
-                                                     SettingsSectionItem.languageItem(viewModel: languageCellViewModel)]
+                                                     SettingsSectionItem.languageItem(viewModel: languageCellViewModel),
+                                                     SettingsSectionItem.removeCacheItem(viewModel: removeCacheCellViewModel)
+                                                ]
                 )]
             return items
             

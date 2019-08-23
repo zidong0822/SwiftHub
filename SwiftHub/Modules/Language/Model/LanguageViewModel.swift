@@ -36,7 +36,7 @@ class LanguageViewModel: ViewModel, ViewModelType {
         input.trigger.map({ () -> [LanguageCellViewModel] in
             let languages = Localize.availableLanguages(true)
             return languages.map({ (language) -> LanguageCellViewModel in
-                let viewModel = LanguageCellViewModel(with: language)
+                let viewModel = LanguageCellViewModel(with: language,currentLanguage: self.currentLanguage.value)
                 return viewModel
             })
         }).bind(to: elements).disposed(by: rx.disposeBag)
@@ -45,8 +45,8 @@ class LanguageViewModel: ViewModel, ViewModelType {
         
         selectedEvent.drive(onNext:{ (viewModel) in
             let language = viewModel.language
-            Localize.setCurrentLanguage(language)
             self.currentLanguage.accept(language)
+            Localize.setCurrentLanguage(language)
         }).disposed(by: rx.disposeBag)
    
         return Output(items: elements.asDriver(),

@@ -15,7 +15,7 @@ class ThemeCellViewModel: DefaultTableViewCellViewModel {
     let imageColor = BehaviorRelay<UIColor?>(value: nil)
     
     let theme: ColorTheme
-    
+
     init(with theme: ColorTheme){
         self.theme = theme
         super.init()

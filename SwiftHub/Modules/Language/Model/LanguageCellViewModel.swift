@@ -13,9 +13,10 @@ import RxCocoa
 class LanguageCellViewModel: DefaultTableViewCellViewModel {
     
     let language: String
-    
-    init(with language: String) {
+    var currentLanguage: String
+    init(with language: String, currentLanguage: String) {
         self.language = language
+        self.currentLanguage = currentLanguage
         super.init()
         title.accept(displayName(forLanguage: language))
     }

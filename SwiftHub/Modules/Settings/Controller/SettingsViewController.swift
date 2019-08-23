@@ -43,7 +43,8 @@ class SettingsViewController: TableViewController {
                 cell.bind(to: viewModel)
                 return cell
             case .themeItem(let viewModel),
-                 .languageItem(let viewModel):
+                 .languageItem(let viewModel),
+                 .removeCacheItem(let viewModel):
                 let cell = (tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? SettingCell)!
                 cell.bind(to:viewModel)
                 return cell
@@ -63,7 +64,10 @@ class SettingsViewController: TableViewController {
                 if let viewModel = viewModel.viewModel(for: item) as? LanguageViewModel {
                     self?.navigator.show(segue: .language(viewModel: viewModel), sender: self, transition: .detail)
                 }
-            case .nightModeItem:break
+            case .nightModeItem:
+                self?.deselectSelectedRow()
+            case .removeCacheItem:
+                self?.deselectSelectedRow()
                 
             }
         }).disposed(by: rx.disposeBag)

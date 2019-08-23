@@ -18,6 +18,7 @@ enum SettingsSectionItem {
     case nightModeItem(viewModel: SettingSwitchCellViewModel)
     case themeItem(viewModel: SettingCellViewModel)
     case languageItem(viewModel: SettingCellViewModel)
+    case removeCacheItem(viewModel: SettingCellViewModel)
 }
 
 extension SettingsSectionItem: IdentifiableType {
@@ -26,7 +27,8 @@ extension SettingsSectionItem: IdentifiableType {
         switch self {
         case .nightModeItem(let viewModel): return viewModel.title.value ?? ""
         case .themeItem(let viewModel),
-             .languageItem(let viewModel): return viewModel.title.value ?? ""
+             .languageItem(let viewModel),
+             .removeCacheItem(let viewModel): return viewModel.title.value ?? ""
         }
     }
 }
